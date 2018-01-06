@@ -21,7 +21,7 @@
 						<p style="color: #008B8B">
 							<strong>
 								@if($user->profile->status == 'STUDENT')
-									Session: {!! $user->profile->session !!}
+									Session: {!! $user->profile->session_year !!}
 								@endif
 							</strong>
 						</p>

@@ -14,7 +14,12 @@ class UsersTableSeeder extends Seeder
     {
         #User::truncate();
 
-        User::create(['name' => 'Zakia Ritu', 'email' => 'zakiaritu.cse@gmail.com', 'password' => bcrypt('a')]);
+        User::create([
+            'name' => 'Zakia Ritu',
+            'email' => 'zakiaritu.cse@gmail.com',
+            'password' => bcrypt('a'),
+            'user_meta_data' => 'zakia14051993'
+        ]);
         \App\Profile::create(['user_id' => 1, 'status' => 'STUDENT']);
 
         factory(App\User::class, 50)->create()->each(function ($u) {

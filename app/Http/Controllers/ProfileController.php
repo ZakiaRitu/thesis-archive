@@ -24,9 +24,9 @@ class ProfileController extends Controller
 
 
 
-    public function userProfile($id)
+    public function userProfile($user_meta_data)
     {
-        $user = User::findOrFail($id);
+        $user = User::where('user_meta_data',$user_meta_data)->first();
         return view('user.profile', compact('user'));
     }
 
@@ -81,7 +81,7 @@ class ProfileController extends Controller
                 $profile = Profile::where('user_id',Auth::user()->id)->first();
                 $profile->phone_num = $request->phone_num;
                 $profile->interest = $request->interest;
-                $profile->session = $request->session;
+                $profile->session_year = $request->session_year;
                 $profile->reg_num = $request->reg_num;
                 $profile->designation = $request->designation;
                 if($profile->save()){

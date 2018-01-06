@@ -23,7 +23,7 @@ class CreateProfilesTable extends Migration
             $table->string('status')->nullable(); # STUDENT/FACULTY
             $table->string('designation')->nullable(); #only for teacher
             $table->string('reg_num')->nullable();  #student field
-            $table->string('session')->nullable();  #student field
+            $table->string('session_year')->nullable();  #student field
             $table->timestamps();
         });
     }

@@ -39,8 +39,8 @@
 @if($user->profile->status == 'STUDENT')
     <!-- Session -->
         <div class="form-group">
-            {!! Form::label('session', "Session", array('class' => 'control-label')) !!}
-            {!! Form::text('session', $user->profile->session, array('class' => 'form-control', 'placeholder' => 'No Information Found', 'disabled')) !!}
+            {!! Form::label('session_year', "Session", array('class' => 'control-label')) !!}
+            {!! Form::text('session_year', $user->profile->session_year, array('class' => 'form-control', 'placeholder' => 'No Information Found', 'disabled')) !!}
         </div>
 
         <!-- Registration -->

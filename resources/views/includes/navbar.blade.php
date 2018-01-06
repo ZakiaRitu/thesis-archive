@@ -1,4 +1,4 @@
-<section>
+<section style="background-color: #363839">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -16,10 +16,10 @@
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/">Faculty</a>
+                                    <a class="nav-link" href="{!! route('user.faculty') !!}">Faculty</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/">Members</a>
+                                    <a class="nav-link" href="{!! route('user.members') !!}">Members</a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-slide">
                                     <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,12 +27,9 @@
                                     </a>
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="/">Big Data</a>
-                                        <a class="dropdown-item" href="/">Bio Informatics</a>
-                                        <a class="dropdown-item" href="/">Image Processing</a>
-                                        <a class="dropdown-item" href="/">NLP</a>
-                                        <a class="dropdown-item" href="/">Networking</a>
-                                        <a class="dropdown-item" href="/">OCR</a>
+                                        @foreach(\App\Category::all() as $category)
+                                        <a class="dropdown-item" href="#">{!! $category->cat_name !!}</a>
+                                        @endforeach
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown dropdown-slide">

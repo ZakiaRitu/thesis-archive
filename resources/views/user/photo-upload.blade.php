@@ -4,7 +4,6 @@
             <div class="photo-upload">
                 {{ Form::open(array('route' => 'profile.updatePhoto', 'method' => 'put', 'files' => true)) }}
                 <fieldset>
-                    <label>UPLOAD PICTURE:</label><br/>
                     @if($user->profile->image != null)
                         <img class="preview rounded-circle" id="preview" height="200px"  width="200px" alt=" "  src="{{asset($user->profile->image)}}">
                     @else
