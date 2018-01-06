@@ -6,7 +6,9 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('logout', 'Auth\LoginController@logout');
     Route::get('profile', ['as'=> 'profile.index','uses' => 'ProfileController@index']);
-    Route::get('edit-profile', ['as'=> 'profile.edit','uses' => 'ProfileController@edit']);
+    Route::get('user/profile/{id}', ['as'=> 'profile.userProfile','uses' => 'ProfileController@userProfile']);
+    Route::put('update-profile', ['as'=> 'profile.updateInfo','uses' => 'ProfileController@updateInfo']);
+    Route::put('photo-update', ['as'=> 'profile.updatePhoto','uses' => 'ProfileController@updatePhoto']);
 });
 
 
@@ -14,7 +16,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-#ffff
+
 
 
 Route::get('test', function (){

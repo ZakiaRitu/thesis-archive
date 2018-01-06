@@ -1,74 +1,57 @@
-@extends('layouts.default')
-@section('content')
-
-    <section>
-        <div class="container">
-            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0" style="margin: 0 auto;">
-                <!-- Edit Personal Info -->
-                <div class="widget personal-info">
-                    <h3 class="widget-header user">Let's Complete Your Profile</h3>
-                    <form role="form" method="POST" action="{{ route('profile.index') }}">
-                        <!-- File chooser -->
-                        <div class="form-group choose-file">
-                            <i class="fa fa-user text-center"></i>
-                            <input type="file" class="form-control-file d-inline" id="profile-pic">
-                        </div>
-                        <!-- First Name -->
-                        <div class="form-group">
-                            <label for="first-name">Full Name</label>
-                            <input type="text" class="form-control" id="full-name" required="true">
-                        </div>
-                        <!-- Comunity Name -->
-                        <div class="form-group">
-                            <label for="comunity-name">Batch</label>
-                            <input type="text" class="form-control" id="batch" required="true">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="first-name">Registration Number</label>
-                            <input type="text" class="form-control" id="reg-num" required="true">
-                        </div>
-
-                        <!-- Last Name -->
-                        <div class="form-group">
-                            <label for="last-name">Email Address</label>
-                            <input type="text" class="form-control" id="email-addr" required="true">
-                        </div>
-
-                        <!-- Last Name -->
-                        <div class="form-group">
-                            <label for="last-name">Phone Number</label>
-                            <input type="text" class="form-control" id="phone" required="true">
-                        </div>
-                        <!-- Checkbox -->
-                        <!-- <div class="form-check">
-                          <label class="form-check-label" for="hide-profile">
-                            <input class="form-check-input" type="checkbox" value="" id="hide-profile">
-                            Hide Profile from Public/Comunity
-                          </label>
-                        </div> -->
-                        <!-- Zip Code -->
-                        <!-- <div class="form-group">
-                            <label for="zip-code">Zip Code</label>
-                            <input type="text" class="form-control" id="zip-code">
-                        </div> -->
-                        <!-- Submit button -->
-                        <button class="btn btn-transparent" href="{{ route('profile.index') }}" style="background-color: #008B8B; color: #fff;">Save My Information</button>
-                    </form>
-                </div>
-            </div>
+<!-- Edit Personal Info -->
+<div class="widget personal-info">
+    <h3 class="widget-header user">Personal Information</h3>
+    {!! Form::model($user->profile, array('route' => ['profile.updateInfo'], 'method' => 'put', 'class' => 'form-horizontal')) !!}
+        <!-- Complete Name -->
+        <div class="form-group">
+            {!! Form::label('name', "Complete Name", array('class' => 'control-label')) !!}
+            {!! Form::text('name', $user->name, array('class' => 'form-control', 'placeholder' => 'Enter Name Here..')) !!}
         </div>
-    </section>
 
-@stop
-@section('style')
-    {{--include external css here if you neeed--}}
-@stop
-@section('script')
-    {{--include external js here if you neeed--}}
-@stop
+        <!-- Email -->
+        <div class="form-group">
+            {!! Form::label('email', "Email", array('class' => 'control-label')) !!}
+            {!! Form::text('email', $user->email, array('class' => 'form-control', 'placeholder' => 'Enter Name Email..', 'disabled')) !!}
+        </div>
 
 
+        <!-- Phone Number -->
+        <div class="form-group">
+            {!! Form::label('phone_num', "Phone Number", array('class' => 'control-label')) !!}
+            {!! Form::text('phone_num', null, array('class' => 'form-control', 'placeholder' => 'Enter Phone Number Here..')) !!}
+        </div>
+
+        <!-- Interest -->
+        <div class="form-group">
+            {!! Form::label('interest', "Interest", array('class' => 'control-label')) !!}
+            {!! Form::text('interest', null, array('class' => 'form-control', 'placeholder' => 'Enter Your Interest Here.. ')) !!}
+        </div>
+
+        @if($user->profile->status == 'FACULTY')
+            <!-- Designation -->
+            <div class="form-group">
+                {!! Form::label('designation', "Designation", array('class' => 'control-label')) !!}
+                {!! Form::text('designation', null, array('class' => 'form-control', 'placeholder' => 'Enter Your Designation Here..')) !!}
+            </div>
+        @endif
 
 
+        @if($user->profile->status == 'STUDENT')
+            <!-- Session -->
+            <div class="form-group">
+                {!! Form::label('session', "Session", array('class' => 'control-label')) !!}
+                {!! Form::text('session', null, array('class' => 'form-control', 'placeholder' => 'Enter Your Session Here..')) !!}
+            </div>
 
+            <!-- Registration -->
+            <div class="form-group">
+                {!! Form::label('reg_num', "Registration", array('class' => 'control-label')) !!}
+                {!! Form::text('reg_num', null, array('class' => 'form-control', 'placeholder' => 'Enter Your Registration Number Here..')) !!}
+            </div>
+        @endif
+
+
+        <!-- Submit button -->
+        <button class="btn btn-transparent">Save My Changes</button>
+    {{ Form::close() }}
+</div>

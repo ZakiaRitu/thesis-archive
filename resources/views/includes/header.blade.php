@@ -7,7 +7,7 @@
     <title>{!! $title or \App\ProjectSettings\Setting::$projectName !!}</title>
 
     <!-- PLUGINS CSS STYLE -->
-    <link href="{!! asset('plugins/jquery-ui/jquery-ui.min.css') !!}" rel="stylesheet">
+    <link href="{!! asset('plugins/jquery-ui/jquery-ui.css') !!}" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="{!! asset('plugins/bootstrap/dist/css/bootstrap.min.css') !!}" rel="stylesheet">
     <!-- Font Awesome -->

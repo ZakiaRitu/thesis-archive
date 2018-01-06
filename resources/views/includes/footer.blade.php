@@ -29,18 +29,18 @@
 </footer>
 
 <!-- JAVASCRIPTS -->
-<script src="{!! asset('plugins/jquery/jquery.min.js') !!}"></script>
-<script src="{!! asset('plugins/jquery-ui/jquery-ui.min.js') !!}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{{--<script src="{!! asset('plugins/jquery-ui/external/jquery/jquery.js') !!}"></script>--}}
+<script src="{!! asset('plugins/jquery-ui/jquery-ui.js') !!}"></script>
 <script src="{!! asset('plugins/tether/js/tether.min.js') !!}"></script>
 <script src="{!! asset('plugins/raty/jquery.raty-fa.js') !!}"></script>
 <script src="{!! asset('plugins/bootstrap/dist/js/popper.min.js') !!}"></script>
-<script src="{!! asset('plugins/bootstrap/dist/js/bootstrap.min.js') !!}"></script>
-<script src="{!! asset('plugins/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js') !!}"></script>
+<script src="{!! asset('plugins/bootstrap/dist/js/bootstrap.bundle.js') !!}"></script>
 <script src="{!! asset('plugins/slick-carousel/slick/slick.min.js') !!}"></script>
 <script src="{!! asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js') !!}"></script>
 <script src="{!! asset('plugins/fancybox/jquery.fancybox.pack.js') !!}"></script>
 <script src="{!! asset('plugins/smoothscroll/SmoothScroll.min.js') !!}"></script>
-<script src="{!! asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw') !!}"></script>
-<script src="{!! asset('js/scripts.js') !!}"></script>
 @yield('script')
+
+{{--<script src="{!! asset('js/scripts.js') !!}"></script>--}}
 
