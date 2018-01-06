@@ -13,6 +13,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
+
+#ffff
+
+
 Route::get('test', function (){
     $cat = \App\Category::pluck('id');
     return $rand_keys = array_random($cat->toArray(),3);
