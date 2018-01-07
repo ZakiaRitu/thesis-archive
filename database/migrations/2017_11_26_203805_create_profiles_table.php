@@ -17,6 +17,7 @@ class CreateProfilesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('is_admin')->default('NO')->nullable();
             $table->string('image')->nullable();
             $table->string('phone_num')->nullable();
             $table->string('interest')->nullable();

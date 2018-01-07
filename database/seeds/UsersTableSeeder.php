@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('a'),
             'user_meta_data' => 'zakia14051994'
         ]);
-        \App\Profile::create(['user_id' => 1, 'status' => 'FACULTY']);
+        \App\Profile::create(['user_id' => 1, 'status' => 'FACULTY', 'is_admin'=>'YES']);
 
         factory(App\User::class, 50)->create()->each(function ($u) {
             $u->profile()->save(factory(App\Profile::class)->make());
