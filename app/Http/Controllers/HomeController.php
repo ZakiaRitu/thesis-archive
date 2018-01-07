@@ -7,7 +7,7 @@ use Auth;
 
 class HomeController extends Controller
 {
-      public function index()
+    public function index()
     {
        $user = Auth::user();
        return view('welcome',compact('user'));

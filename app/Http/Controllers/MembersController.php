@@ -13,7 +13,8 @@ class MembersController extends Controller
     public function facultyMembers()
     {
         $profiles = Profile::where('status','FACULTY')->paginate(12);
-        return view('members.show', compact('profiles'));
+        return view('members.show', compact('profiles'))
+            ->with('title','Faculty Lists');
     }
 
 
@@ -22,6 +23,7 @@ class MembersController extends Controller
     public function otherMembers()
     {
         $profiles = Profile::where('status','STUDENT')->paginate(12);
-        return view('members.show', compact('profiles'));
+        return view('members.show', compact('profiles'))
+            ->with('title','Member Lists');
     }
 }

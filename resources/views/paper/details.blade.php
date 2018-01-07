@@ -1,24 +1,7 @@
 @extends('layouts.default')
 @section('content')
 
-    <!--================================
-=            Page Title            =
-=================================-->
-    <section class="page-title">
-        <!-- Container Start -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
-                    <!-- Title text -->
-                    <h3>{!! $title !!}</h3>
-                </div>
-            </div>
-        </div>
-        <!-- Container End -->
-    </section>
-    <!--==================================
-    =            Blog Section            =
-    ===================================-->
+
 
     <section class="blog section">
         <div class="container">
@@ -37,9 +20,18 @@
                             @endforeach
                             </li>
                             <br>
-
                             <li class="list-inline-item">{!! $paper->created_at->formatLocalized('%A %d %B %Y'); !!}</li>
                         </ul>
+
+                        Categories:
+                        <em>
+                            @foreach($paper->categories as $category)
+                                <a style="color:yellowgreen" target="_blank" href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">
+                                    {!! $category->cat_name !!}
+                                </a>,&nbsp;
+                            @endforeach
+                        </em><br>
+
                         <!-- Post Description -->
                         <p class=""><b><em>Abstract: &nbsp;</em></b><br>{!! $paper->paper_abstract !!}</p>
                         <p class=""><b>Conference Name: &nbsp;</b><br>{!! $paper->paper_published_at !!}</p>
@@ -67,13 +59,15 @@
 
                 <div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
                     <div class="sidebar">
+                        <form class="form" method="GET" action="{{ route('paper.paperSearch') }}">
                         <!-- Search Widget -->
                         <div class="widget search p-0">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="expire" placeholder="Search...">
-                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <input type="text"  name="paper_title" class="form-control" id="expire" placeholder="Search...">
+                                <button type="submit" class="input-group-addon"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
+                        </form>
                         <!-- Category Widget -->
                         <div class="widget category">
                             <!-- Widget Header -->

@@ -5,6 +5,14 @@
     <title>{!! $title or 'Register' !!} | {!! \App\ProjectSettings\Setting::$projectName !!}</title>
       <link rel="stylesheet" href="{!! asset('css/style1.css') !!}">
       <link href="{!! asset('img/favicon.ico') !!}" rel="shortcut icon">
+
+    <style>
+        select#status{
+            height: 37px;
+            width: 250px;
+            margin-bottom: -8px;
+        }
+    </style>
 </head>
 
 <body>
@@ -61,11 +69,26 @@
                     </div>
                 </div>
 
+              <div class="form-group">
+                  <div class="col-md-6">
+                      <select id="status" class="form-control" name="status" placeholder="Select Status" required>
+                          <option value="STUDENT">STUDENT</option>
+                          <option value="FACULTY">FACULTY</option>
+                          {{--<option value="2" selected="selected">2</option>--}}
+                      </select>
+                  </div>
+              </div><br>
+
+
+
+
+
+
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
                         <button type="submit" class="btn btn-primary">
                             Register
-                        </button>
+                        </button><br>
                     </div>
                 </div>
           </form>

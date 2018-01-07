@@ -52,6 +52,19 @@
             text-align: center;
         }
 
+        .page-title {
+            background: #62792c87;
+            padding: 14px 0;
+        }
+
+        .page-title h3 {
+            color: #fff;
+            font-size: 33px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 4px;
+            font-family: cursive;
+        }
     </style>
 </head>
 

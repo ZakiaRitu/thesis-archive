@@ -19,7 +19,8 @@ class ProfileController extends Controller
     {
 
         $user = Auth::user();
-        return view('user.profile', compact('user'));
+        return view('user.profile', compact('user'))
+            ->with('title','Profile | '.$user->name);
     }
 
 
@@ -27,7 +28,8 @@ class ProfileController extends Controller
     public function userProfile($user_meta_data)
     {
         $user = User::where('user_meta_data',$user_meta_data)->first();
-        return view('user.profile', compact('user'));
+        return view('user.profile', compact('user'))
+            ->with('title','Profile | '.$user->name);
     }
 
 
