@@ -24,6 +24,7 @@ class CreateProfilesTable extends Migration
             $table->string('designation')->nullable(); #only for teacher
             $table->string('reg_num')->nullable();  #student field
             $table->string('session_year')->nullable();  #student field
+            $table->text('bio')->nullable();  #student field
             $table->timestamps();
         });
     }

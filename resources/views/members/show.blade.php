@@ -12,8 +12,6 @@
                     <div class="search-result bg-gray">
                         <h2 class="text-center">No Data Found</h2>
                     </div>
-                    <br><br><br><br><br><br>
-                    <br><br><br><br><br>
                 </div>
                 @endif
 
@@ -57,7 +55,9 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                            <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+                                            {{--<p class="card-text text-center">--}}
+                                                {{--xfdshjghjdhrtkj--}}
+                                            {{--</p>--}}
                                         </div>
                                     </div>
                                 </div>

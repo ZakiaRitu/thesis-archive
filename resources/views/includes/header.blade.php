@@ -42,6 +42,16 @@
         a.navbar-brand {
             color: white;
         }
+
+        .footer-bottom {
+            position: fixed; ;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
     </style>
 </head>
 

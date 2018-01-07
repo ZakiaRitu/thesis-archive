@@ -51,7 +51,15 @@
         @endif
 
 
-        <!-- Submit button -->
+       <!-- Bio -->
+        <div class="form-group">
+            {!! Form::label('bio', "Bio", array('class' => 'control-label')) !!}
+            {!! Form::textarea('bio', null, array('class' => 'form-control textarea', 'placeholder' => 'Enter Your Bio Here.. ')) !!}
+        </div>
+
+
+
+    <!-- Submit button -->
         <button class="btn btn-transparent">Save My Changes</button>
     {{ Form::close() }}
 </div>

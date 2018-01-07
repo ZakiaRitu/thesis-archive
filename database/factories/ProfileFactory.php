@@ -11,5 +11,6 @@ $factory->define(\App\Profile::class, function (Faker $faker) {
         'designation' => $faker->word,
         'reg_num' => $faker->bankAccountNumber,
         'session_year' => $faker->year,
+        'bio' => $faker->sentence(100),
     ];
 });

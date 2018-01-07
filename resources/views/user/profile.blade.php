@@ -24,6 +24,22 @@
 									Session: {!! $user->profile->session_year !!}
 								@endif
 							</strong>
+
+							<ul class="list-inline product-meta text-center">
+								<li class="list-inline-item">
+									<a href="#"><i class="fa fa-folder-open-o"></i>
+										<b>
+											{!! \App\PaperUser::where('user_id', $user->id)->count() !!}
+										</b> Papers
+									</a>
+								</li><br>
+								<li class="list-inline-item">
+									<a href="#"><i class="fa fa-calendar"></i>
+										Joined at : {!! $user->created_at->toDateString() !!}
+									</a>
+								</li>
+							</ul>
+
 						</p>
 					</div>
 					<!-- Dashboard Links -->
@@ -54,9 +70,12 @@
 @section('style')
     {{--include external css here if you neeed--}}
 	<link href="{!! asset('css/photo_upload.css') !!}" rel="stylesheet">
-
-
-
+	<style>
+		.textarea.form-control {
+			padding: 7px;
+			height: 100px;
+		}
+	</style>
 @stop
 @section('script')
    {{--include external js here if you neeed--}}

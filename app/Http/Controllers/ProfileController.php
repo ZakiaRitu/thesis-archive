@@ -84,6 +84,7 @@ class ProfileController extends Controller
                 $profile->session_year = $request->session_year;
                 $profile->reg_num = $request->reg_num;
                 $profile->designation = $request->designation;
+                $profile->bio = $request->bio;
                 if($profile->save()){
                     return redirect()->back()->with('success','Profile Info updated successfully');
                 }else{
