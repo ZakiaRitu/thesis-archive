@@ -23,6 +23,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('category/{cat_meta_data}/paper', ['as'=> 'paper.categoryWisePaper','uses' => 'PaperController@categoryWisePaper']);
     Route::get('user/profile/{user_meta_data}/paper', ['as'=> 'paper.userWisePaper','uses' => 'PaperController@userWisePaper']);
 
+
+    Route::get('allUser', ['as'=> 'admin.user.allUser','uses' => 'UserController@allUser']);
+    Route::get('allUser/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
+
+
 });
 
 

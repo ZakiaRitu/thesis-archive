@@ -39,6 +39,11 @@
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a>
+                                       @if(Auth::user()->profile->is_admin == 'YES')
+                                        <a class="dropdown-item" href="{{ route('admin.user.allUser') }}">All User</a>
+                                        <a class="dropdown-item" href="{{ route('profile.index') }}">All Category</a>
+                                        <a class="dropdown-item" href="{{ route('profile.index') }}">New Category</a>
+                                        @endif
                                     </div>
                                 </li>
                             </ul>
