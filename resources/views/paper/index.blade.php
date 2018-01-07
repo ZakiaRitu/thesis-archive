@@ -14,7 +14,7 @@
                 <div class="col-md-12">
                     <p>Found {!!  count($papers)  !!} Papers in .000023 ms</p>
                 </div>
-                
+
                 @if(count($papers)== 0)
                     <div class="col-md-12">
                         <div class="search-result bg-gray">

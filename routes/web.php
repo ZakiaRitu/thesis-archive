@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('papers', ['as'=> 'paper.paperSearch','uses' => 'PaperController@paperSearch']);
 
     Route::get('category/{cat_meta_data}/paper', ['as'=> 'paper.categoryWisePaper','uses' => 'PaperController@categoryWisePaper']);
+    Route::get('user/profile/{user_meta_data}/paper', ['as'=> 'paper.userWisePaper','uses' => 'PaperController@userWisePaper']);
 
 });
 
