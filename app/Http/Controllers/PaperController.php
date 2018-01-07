@@ -8,6 +8,7 @@ use App\Paper;
 use App\PaperUser;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaperController extends Controller
 {
@@ -61,6 +62,33 @@ class PaperController extends Controller
         $papers = Paper::whereIn('id', $paperIds)->orderBY('created_at','desc')->paginate(12);
         $categories = Category::pluck( 'cat_name', 'id');
         return view('paper.index', compact( 'papers','categories'));
+    }
+
+
+
+    public function paperDetails($paper_meta_data){
+        $archives = Paper::selectRaw(DB::raw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, COUNT(*) paper_count'))
+            ->groupBy('year')
+            ->groupBy('month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->get();
+        $categories = Category::all();
+        $paper = Paper::where('paper_meta_data', $paper_meta_data)->first();
+        return view('paper.details', compact( 'paper','categories','archives'))->with('title',str_limit($paper->paper_title, 30,'...'));
+
+    }
+
+
+    public function archivedPaper($month,$year)
+    {
+        $categories = Category::pluck( 'cat_name', 'id');
+        $papers = Paper::orderBY('created_at','desc')
+            ->whereMonth('created_at', $month)
+            ->whereYear('created_at', $year)
+            ->paginate(12);
+        return view('paper.index', compact( 'papers','categories'))
+                        ->with('title', 'Archived Paper-'.$month.' /'.$year);
     }
 
 }

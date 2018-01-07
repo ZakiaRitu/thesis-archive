@@ -18,9 +18,9 @@ class UsersTableSeeder extends Seeder
             'name' => 'Zakia Ritu',
             'email' => 'zakiaritu.cse@gmail.com',
             'password' => bcrypt('a'),
-            'user_meta_data' => 'zakia14051993'
+            'user_meta_data' => 'zakia14051994'
         ]);
-        \App\Profile::create(['user_id' => 1, 'status' => 'STUDENT']);
+        \App\Profile::create(['user_id' => 1, 'status' => 'FACULTY']);
 
         factory(App\User::class, 50)->create()->each(function ($u) {
             $u->profile()->save(factory(App\Profile::class)->make());

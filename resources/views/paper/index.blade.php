@@ -39,7 +39,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h3 class="card-title">
-                                                    <a href="#">
+                                                    <a href="{!! route('paper.paperDetails',$paper->paper_meta_data) !!}">
                                                         {!! $paper->paper_title !!}
                                                     </a><br>
                                                 </h3>

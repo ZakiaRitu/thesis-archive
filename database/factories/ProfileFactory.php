@@ -4,7 +4,8 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Profile::class, function (Faker $faker) {
     return [
-        'image' => $faker->imageUrl(230,250),
+        //'image' => $faker->imageUrl(230,250),
+        'image' => '/images/anonymous.jpg',
         'phone_num' => $faker->phoneNumber,
         'interest' => $faker->word,
         'status' => 'STUDENT',

@@ -51,7 +51,7 @@
                                                 </li><br>
                                                 <li class="list-inline-item">
                                                     <a href="#"><i class="fa fa-calendar"></i>
-                                                        Joined at : {!! $profile->user->created_at->toDateString() !!}
+                                                        Joined at : {!! $profile->user->created_at->formatLocalized('%A %d %B %Y'); !!}
                                                     </a>
                                                 </li>
                                             </ul>

@@ -17,6 +17,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('papers', ['as'=> 'paper.allPaperList','uses' => 'PaperController@allPaperList']);
     Route::get('papers', ['as'=> 'paper.paperSearch','uses' => 'PaperController@paperSearch']);
+    Route::get('papers/details/{paper_meta_data}', ['as'=> 'paper.paperDetails','uses' => 'PaperController@paperDetails']);
+    Route::get('papers/archive/{month}/{year}', ['as'=> 'paper.archivedPaper','uses' => 'PaperController@archivedPaper']);
 
     Route::get('category/{cat_meta_data}/paper', ['as'=> 'paper.categoryWisePaper','uses' => 'PaperController@categoryWisePaper']);
     Route::get('user/profile/{user_meta_data}/paper', ['as'=> 'paper.userWisePaper','uses' => 'PaperController@userWisePaper']);
