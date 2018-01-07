@@ -12,7 +12,7 @@ class MembersController extends Controller
 
     public function facultyMembers()
     {
-         $profiles = Profile::where('status','FACULTY')->paginate(12);
+        $profiles = Profile::where('status','FACULTY')->paginate(12);
         return view('members.show', compact('profiles'));
     }
 

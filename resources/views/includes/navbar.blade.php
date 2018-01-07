@@ -28,7 +28,7 @@
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu dropdown-menu-right">
                                         @foreach(\App\Category::all() as $category)
-                                        <a class="dropdown-item" href="#">{!! $category->cat_name !!}</a>
+                                        <a class="dropdown-item" href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">{!! $category->cat_name !!}</a>
                                         @endforeach
                                     </div>
                                 </li>

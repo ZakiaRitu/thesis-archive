@@ -14,6 +14,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('faculty', ['as'=> 'user.faculty','uses' => 'MembersController@facultyMembers']);
     Route::get('members', ['as'=> 'user.members','uses' => 'MembersController@otherMembers']);
 
+
+    Route::get('papers', ['as'=> 'paper.allPaperList','uses' => 'PaperController@allPaperList']);
+    Route::get('papers', ['as'=> 'paper.paperSearch','uses' => 'PaperController@paperSearch']);
+
+    Route::get('category/{cat_meta_data}/paper', ['as'=> 'paper.categoryWisePaper','uses' => 'PaperController@categoryWisePaper']);
+
 });
 
 

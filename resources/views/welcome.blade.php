@@ -12,12 +12,12 @@
                        <div class="short-popular-category-list text-center">
                         </div>
                         <div class="advance-search">
-                            <form action="#">
+                            <form class="form" method="GET" action="{{ route('paper.paperSearch') }}">
                                 <div class="row">
                                     <!-- Store Search -->
                                     <div class="col-lg-12 col-md-24">
                                         <div class="block d-flex">
-                                            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Search paper">
+                                            <input type="text" name="paper_title" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Search paper">
                                             <!-- Search Button -->
                                             <button class="btn btn-main" style="background-color: #008B8B; color: #fff;">SEARCH</button>
                                         </div>
