@@ -28,6 +28,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('allUser/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
 
 
+    ##
+    Route::get('mypaper', ['as' => 'paper.mypapers', 'uses' => 'PaperManageController@index']);
+    Route::get('mypaper/create', ['as' => 'paper.create', 'uses' => 'PaperManageController@create']);
+    Route::post('mypaper', ['as' => 'paper.store', 'uses' => 'PaperManageController@store']);
+    Route::get('mypaper/{paper_meta_data}/edit', ['as' => 'paper.edit', 'uses' => 'PaperManageController@edit']);
+    Route::put('mypaper/{paper_meta_data}/update', ['as' => 'paper.update', 'uses' => 'PaperManageController@update']);
+    Route::delete('mypaper/{paper_meta_data}', ['as' => 'paper.delete', 'uses' => 'PaperManageController@destroy']);
+
+    Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
+    Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
+    Route::post('category', ['as' => 'category.store', 'uses' => 'CategoryController@store']);
+    Route::get('category/{cat_meta_data}/edit', ['as' => 'category.edit', 'uses' => 'CategoryController@edit']);
+    Route::put('category/{cat_meta_data}/update', ['as' => 'category.update', 'uses' => 'CategoryController@update']);
+    Route::delete('category/{cat_meta_data}', ['as' => 'category.delete', 'uses' => 'CategoryController@destroy']);
+
+
 });
 
 
@@ -40,5 +56,5 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('test', function (){
     $cat = \App\Category::pluck('id');
-    return $rand_keys = array_random($cat->toArray(),3);
+
 });
