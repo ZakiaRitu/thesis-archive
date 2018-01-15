@@ -17,7 +17,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('category.index')->with('title','Create New Category');
+        return view('category.create')->with('title','Create New Category');
     }
 
 
@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function edit($cat_meta_data)
     {
          $category = Category::where('cat_,eta_data',$cat_meta_data)->first();
-         return view('category.index', compact('category'))->with('title', 'Edit Category');
+         return view('category.edit', compact('category'))->with('title', 'Edit Category');
     }
 
 
@@ -60,11 +60,11 @@ class CategoryController extends Controller
     public function delete($cat_meta_data)
     {
         $category = Category::where('cat_,eta_data',$cat_meta_data)->first();
-       if( $category->delete()){
+        if($category->delete()){
            return redirect()->back()->with('success', 'Category Deleted Successfully.');
-       }else{
+        }else{
            return redirect()->back()->with('error', 'Something Went Wrong.');
-       }
+        }
     }
 
 
