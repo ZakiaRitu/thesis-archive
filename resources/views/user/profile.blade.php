@@ -64,7 +64,7 @@
 						<ul>
 						<li class="active" ><a href=""><i class="fa fa-user"></i>About Me</a></li>
 							@if(Auth::user()->id == $user->id)
-							<li><a href=""><i class="fa fa-user"></i> My Papers</a></li>
+							<li><a href="{!! route('paper.index') !!}"><i class="fa fa-user"></i> My Papers</a></li>
 							@else
 								<li><a href="{!! route('paper.userWisePaper',$user->user_meta_data) !!}"><i class="fa fa-user"></i>
 										{!! $user->name !!} Papers</a>

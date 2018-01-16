@@ -24,6 +24,6 @@ class MembersController extends Controller
     {
         $profiles = Profile::where('status','STUDENT')->paginate(12);
         return view('members.show', compact('profiles'))
-            ->with('title','Member Lists');
+            ->with('title','Other Member Lists');
     }
 }

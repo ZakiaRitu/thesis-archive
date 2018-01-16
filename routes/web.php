@@ -20,8 +20,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('papers/details/{paper_meta_data}', ['as'=> 'paper.paperDetails','uses' => 'PaperController@paperDetails']);
     Route::get('papers/archive/{month}/{year}', ['as'=> 'paper.archivedPaper','uses' => 'PaperController@archivedPaper']);
 
+    Route::get('papers/conference', ['as'=> 'paper.conference','uses' => 'PaperController@conferencePaper']);
+    Route::get('papers/journal', ['as'=> 'paper.journal','uses' => 'PaperController@journalPaper']);
+
+    Route::get('category/list', ['as'=> 'category.categoryList','uses' => 'CategoryController@categoryList']);
     Route::get('category/{cat_meta_data}/paper', ['as'=> 'paper.categoryWisePaper','uses' => 'PaperController@categoryWisePaper']);
     Route::get('user/profile/{user_meta_data}/paper', ['as'=> 'paper.userWisePaper','uses' => 'PaperController@userWisePaper']);
+
+
+
+
 
 
     Route::get('allUser', ['as'=> 'admin.user.allUser','uses' => 'UserController@allUser']);
@@ -29,12 +37,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     ##
-    Route::get('mypaper', ['as' => 'paper.mypapers', 'uses' => 'PaperManageController@index']);
+    Route::get('mypaper', ['as' => 'paper.index', 'uses' => 'PaperManageController@index']);
     Route::get('mypaper/create', ['as' => 'paper.create', 'uses' => 'PaperManageController@create']);
     Route::post('mypaper', ['as' => 'paper.store', 'uses' => 'PaperManageController@store']);
     Route::get('mypaper/{paper_meta_data}/edit', ['as' => 'paper.edit', 'uses' => 'PaperManageController@edit']);
     Route::put('mypaper/{paper_meta_data}/update', ['as' => 'paper.update', 'uses' => 'PaperManageController@update']);
     Route::delete('mypaper/{paper_meta_data}', ['as' => 'paper.delete', 'uses' => 'PaperManageController@destroy']);
+
+
 
     Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
     Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);

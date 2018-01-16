@@ -3,38 +3,68 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\CategoryPaper;
 use App\Paper;
+use App\PaperUser;
 use App\User;
 use Illuminate\Http\Request;
 
 class PaperManageController extends Controller
 {
 
-    protected $uploadFilePath = '/upload/paper/pdf/file-';
+    protected $uploadFilePath = '/upload/paper/pdf/';
+
+
+    public function checkCategory( array $data){
+        //for adding unknown Category
+        foreach ($data as $cat) {
+            $categoryTag = Category::where('cat_name','=',$cat)->first();
+            if(empty($categoryTag)){
+                $author = new Category();
+                $author->cat_name = $cat;
+                $author->cat_meta_data = str_slug($cat).time();;
+                $author->save();
+            }
+        }
+        return $categoryIds = Category::whereIn('cat_name', $data)->pluck('id');
+    }
+
+
+
 
 
     public function index()
     {
-        $papers = Paper::all();
-        return view('paper.index',compact('papers'))->with('Papers List');
+        $paperIds = PaperUser::where('user_id', \Auth::user()->id)->pluck('paper_id');
+        $papers = Paper::whereIn('id',$paperIds)->get();
+        return view('paper.mypapers',compact('papers'))->with('title','My Papers List');
     }
+
+
 
 
     public function create()
     {
         $paperType =[
-            'journal' => 'Journal',
-            'conference' => 'Conference',
+            'JOURNAL' => 'JOURNAL',
+            'CONFERENCE' => 'CONFERENCE',
         ];
-        $category = Category::pluck('id','cat_name');
-        $users    = User::pluck('id','name');
+        $category = Category::pluck('cat_name','cat_name');
+        $users    = User::pluck('name','id');
         return view('paper.create', compact('category','users','paperType'))
             ->with('title','Create New Paper');
     }
 
 
+
+
+
+
+
     public function store(Request $request)
     {
+
+        #return $request->all();
         $paper = new Paper();
         $paper->paper_title = $request->paper_title;
         $paper->paper_abstract = $request->paper_abstract;
@@ -43,8 +73,9 @@ class PaperManageController extends Controller
         $paper->paper_type = $request->paper_type;
         $paper->paper_publish_date =  $request->paper_publish_date;
         $paper->paper_cite = $request->paper_cite;
-        $paper->paper_meta_data = str_slug($request->paper_title).time().'.html';
+        $paper->paper_meta_data = str_slug($request->paper_title).time();
         if( $request->hasFile('file')) {
+            if (!is_dir($this->uploadFilePath)) {  mkdir($this->uploadFilePath,0777,true);  }
             $file = $request->file;
             $destinationPath = public_path().$this->uploadFilePath;
             $extension = $file->getClientOriginalExtension();
@@ -56,10 +87,10 @@ class PaperManageController extends Controller
         if($paper->save()){
             //author many to many
             $authors = $request->author;
-            $paper->users()->attach($authors->toArray());
-
-            $categories = $request->category;
-            $paper->categories()->attach($categories->toArray());
+            $paper->users()->attach($authors);
+            //category many to many
+            $categories = $this->checkCategory($request->category)->toArray();
+            $paper->categories()->attach($categories);
 
             return redirect()->route('paper.index')->with('success', 'Paper Successfully Created');
         }else{
@@ -75,12 +106,14 @@ class PaperManageController extends Controller
     {
         $paper = Paper::where('paper_meta_data',$paper_meta_data)->first();
         $paperType =[
-            'journal' => 'Journal',
-            'conference' => 'Conference',
+            'JOURNAL' => 'JOURNAL',
+            'CONFERENCE' => 'CONFERENCE',
         ];
-        $category = Category::pluck('id','cat_name');
-        $users    = User::pluck('id','name');
-        return view('paper.create', compact('category','users','paper','paperType'))
+        $category = Category::pluck('cat_name','id');
+        $users    = User::pluck('name','id');
+
+
+        return view('paper.edit', compact('category','users','paper','paperType'))
             ->with('title','Edit Paper');
     }
 
@@ -95,8 +128,9 @@ class PaperManageController extends Controller
         $paper->paper_type = $request->paper_type;
         $paper->paper_publish_date =  $request->paper_publish_date;
         $paper->paper_cite = $request->paper_cite;
-        #$paper->paper_meta_data = str_slug($request->paper_title).time().'.html';
+        #$paper->paper_meta_data = str_slug($request->paper_title).time();
         if( $request->hasFile('file')) {
+            if (!is_dir($this->uploadFilePath)) {  mkdir($this->uploadFilePath,0777,true);  }
             $file = $request->file;
             $destinationPath = public_path().$this->uploadFilePath;
             $extension = $file->getClientOriginalExtension();
@@ -108,10 +142,12 @@ class PaperManageController extends Controller
         if($paper->save()){
             //author many to many
             $authors = $request->author;
-            $paper->users()->sync($authors->toArray());
+            $paper->users()->sync($authors);
 
+            //category many to many
+            #$categories = $this->checkCategory($request->category)->toArray();
             $categories = $request->category;
-            $paper->categories()->sync($categories->toArray());
+            $paper->categories()->attach($categories);
 
             return redirect()->route('paper.index')->with('success', 'Paper Successfully Created');
         }else{
@@ -121,7 +157,7 @@ class PaperManageController extends Controller
 
 
 
-    public function delete($paper_meta_data)
+    public function destroy($paper_meta_data)
     {
         $paper = Paper::where('paper_meta_data',$paper_meta_data)->first();
         if($paper->delete()){

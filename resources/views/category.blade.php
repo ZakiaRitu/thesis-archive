@@ -1,0 +1,99 @@
+@extends('layouts.default')
+@section('content')
+    <!--=================================
+             Page Title
+       ==================================-->
+    <section class="page-title">
+        <!-- Container Start -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <!-- Title text -->
+                    <h3>{!! $title  or \App\ProjectSettings\Setting::$projectName!!}</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Container End -->
+    </section>
+    <!--==================================
+    =            Blog Section            =
+    ===================================-->
+
+    <section class="section-sm">
+        <div class="container">
+
+            <div class="row">
+
+                @if(count($categories)== 0)
+                    <div class="col-md-12">
+                        <div class="search-result bg-gray">
+                            <h2 class="text-center">No Data Found</h2>
+                        </div>
+                    </div>
+                @endif
+
+
+                <div class="col-md-12">
+                    <div class="product-grid-list">
+                        <div class="row mt-30">
+
+                            @foreach($categories as $category)
+                                <div class="col-sm-12 col-lg-4 col-md-6">
+                                    <!-- product card -->
+                                    <div class="product-item bg-light">
+                                        <div class="card">
+                                            <div class="thumb-content">
+                                            </div>
+                                            <div class="card-body">
+                                                <h4 class="card-title text-center">
+                                                    <a href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">
+                                                        {!! $category->cat_name !!}
+                                                    </a><br>
+                                                </h4>
+
+                                                <ul class="list-inline product-meta text-center">
+                                                    <li class="list-inline-item">
+                                                        <a href="#"><i class="fa fa-folder-open-o"></i>
+                                                            <b>
+                                                              Total  {!! \App\CategoryPaper::where('cat_id', $category->id)->count() !!}
+                                                            </b> Papers
+                                                        </a>
+                                                    </li><br>
+                                                    <li class="list-inline-item">
+                                                        <a href="#"><i class="fa fa-calendar"></i>
+                                                            Created at : {!! $category->created_at->formatLocalized('%A %d %B %Y'); !!}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                {{--<p class="card-text text-center">--}}
+                                                {{--xfdshjghjdhrtkj--}}
+                                                {{--</p>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                    <div class="pagination justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            {!! $categories->links() !!}
+                        </nav>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+@stop
+@section('style')
+    {{--include external css here if you neeed--}}
+@stop
+@section('script')
+    {{--include external js here if you neeed--}}
+@stop
+
+

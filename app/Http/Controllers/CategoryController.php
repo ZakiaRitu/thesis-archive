@@ -7,10 +7,19 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+    public function categoryList()
+    {
+        $categories = Category::paginate(24);
+        return view('category',compact('categories'))->with('title','Category List');
+
+    }
+
+
     public function index()
     {
         $categories = Category::all();
-        return view('category.index',compact('categories'))->with('Category List');
+        return view('category.index',compact('categories'))->with('title','Category List');
     }
 
 
@@ -26,7 +35,7 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->cat_name = $request->cat_name;
-        $category->cat_meta_data = str_slug($request->cat_name).time().'.html';
+        $category->cat_meta_data = str_slug($request->cat_name).time();
         if($category->save()){
             return redirect()->back()->with('success', 'New Category Added Successfully.');
         }else{

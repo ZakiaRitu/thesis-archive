@@ -21,6 +21,25 @@ class PaperController extends Controller
     }
 
 
+    public function conferencePaper()
+    {
+        $categories = Category::pluck( 'cat_name', 'id');
+        $papers = Paper::where('paper_type','=','CONFERENCE')->orderBY('created_at','desc')->paginate(12);
+        return view('paper.index', compact( 'papers','categories'));
+
+    }
+
+
+    public function journalPaper()
+    {
+        $categories = Category::pluck( 'cat_name', 'id');
+        $papers = Paper::where('paper_type','=','JOURNAL')->orderBY('created_at','desc')->paginate(12);
+        return view('paper.index', compact( 'papers','categories'));
+
+    }
+
+
+
     public function paperSearch(Request $request){
 
         $titleSearch = '%'.$request->paper_title.'%';

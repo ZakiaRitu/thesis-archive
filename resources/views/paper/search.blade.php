@@ -15,7 +15,7 @@
                                 {!! Form::select('paper_category', $categories, null, ['class'=>'form-control', 'id'=>'inputCategory4', 'placeholder' => 'Select Category'])  !!}
                             </div>
                             <div class="form-group col-md-2">
-                                <button type="submit" class="btn btn-primary">Search Now</button>
+                                <button type="submit" class="btn1 btn-primary">Search Now</button>
                             </div>
                         </div>
                     </form>

@@ -15,23 +15,36 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{!! route('user.faculty') !!}">Faculty</a>
+
+
+
+                                <li class="nav-item dropdown dropdown-slide">
+                                    <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Members <span><i class="fa fa-angle-down"></i></span>
+                                    </a>
+                                    <!-- Dropdown list -->
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{!! route('user.faculty') !!}">FACULTY</a>
+                                        <a class="dropdown-item" href="{!! route('user.members') !!}">OTHERS</a>
+                                    </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{!! route('user.members') !!}">Members</a>
-                                </li>
+
+
+                                <li class="nav-item"><a class="nav-link" href="{{ route('category.categoryList') }}">Category</a></li>
+
+
                                 <li class="nav-item dropdown dropdown-slide">
                                     <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Archive <span><i class="fa fa-angle-down"></i></span>
                                     </a>
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        @foreach(\App\Category::all() as $category)
-                                        <a class="dropdown-item" href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">{!! $category->cat_name !!}</a>
-                                        @endforeach
+                                        <a class="dropdown-item" href="{!! route('paper.conference') !!}">CONFERENCE</a>
+                                        <a class="dropdown-item" href="{!! route('paper.journal') !!}">JOURNAL</a>
                                     </div>
                                 </li>
+
+
                                 <li class="nav-item dropdown dropdown-slide">
                                     <a class="nav-link dropdown-toggle" href="{{route('profile.index')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ Auth::user()->name }} <span><i class="fa fa-angle-down"></i></span>
@@ -49,7 +62,7 @@
                             </ul>
                             <ul class="navbar-nav ml-auto mt-10">
                                 <li class="nav-item">
-                                    <a class="nav-link login-button" style="color: #fff" href="/">Add Paper</a>
+                                    <a class="nav-link login-button" style="color: #fff" href="{!! route('paper.create') !!}">Add Paper</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link login-button" style="color: #fff" href="{{ route('logout') }}">Logout</a>
