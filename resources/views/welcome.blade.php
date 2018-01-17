@@ -41,6 +41,10 @@
     {{--include external css here if you neeed--}}
 
     <style>
+        #footer-test{
+            position: fixed;
+        }
+
         body{
             background-image: url({!! asset('img/background.png') !!});
         }
@@ -50,6 +54,7 @@
             font-weight: 900;
             font-size: larger;
         }
+
     </style>
 @stop
 @section('script')

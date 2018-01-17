@@ -47,7 +47,7 @@
                                             <div class="card-body">
                                                 <h4 class="card-title text-center">
                                                     <a href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">
-                                                        {!! $category->cat_name !!}
+                                                        {!! ucwords( $category->cat_name) !!}
                                                     </a><br>
                                                 </h4>
 
@@ -65,9 +65,6 @@
                                                         </a>
                                                     </li>
                                                 </ul>
-                                                {{--<p class="card-text text-center">--}}
-                                                {{--xfdshjghjdhrtkj--}}
-                                                {{--</p>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -86,6 +83,7 @@
                 </div>
             </div>
         </div>
+        <br><br>
     </section>
 
 @stop
