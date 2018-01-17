@@ -36,14 +36,15 @@
                         <p class=""><b><em>Abstract: &nbsp;</em></b><br>{!! $paper->paper_abstract !!}</p>
                         <p class=""><b>Conference Name: &nbsp;</b><br>{!! $paper->paper_published_at !!}</p>
                         <p class=""><b>Published Date: &nbsp;</b><br>{!! $paper->paper_publish_date !!}</p>
-                        <p class=""><b>Download File: &nbsp;</b><br>{!! link_to_asset($paper->paper_pdf) !!}</p>
-
+                        @if(Auth::user())
+                            <p class=""><b>Download File: &nbsp;</b><br>{!! link_to_asset($paper->paper_pdf) !!}</p>
+                        @endif
                         <p class=""><b>Cite: &nbsp;</b><br> </p>
                         <div class="w3-panel w3-leftbar w3-light-grey">
                             <p class="w3-xlarge w3-serif">
                                 <i><br>
                                     @if($paper->paper_cite)
-                                        "{!! $paper->paper_cite !!}"
+                                       <p> "{!! $paper->paper_cite !!}"</p>
                                     @else
                                         "No Information Found."
                                     @endif

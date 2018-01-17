@@ -7,12 +7,13 @@ use App\CategoryPaper;
 use App\Paper;
 use App\PaperUser;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PaperManageController extends Controller
 {
 
-    protected $uploadFilePath = '/upload/paper/pdf/';
+    protected $uploadFilePath = '/uploads/paper/pdf';
 
 
     public function checkCategory( array $data){
@@ -76,17 +77,17 @@ class PaperManageController extends Controller
         $paper->paper_published_url = $request->paper_published_url;
         $paper->paper_published_at = $request->paper_published_at;
         $paper->paper_type = $request->paper_type;
-        $paper->paper_publish_date =  $request->paper_publish_date;
+        $paper->paper_publish_date =  Carbon::parse($request->paper_publish_date);
         $paper->paper_cite = $request->paper_cite;
         $paper->paper_meta_data = str_slug($request->paper_title).time();
         if( $request->hasFile('file')) {
-            if (!is_dir($this->uploadFilePath)) {  mkdir($this->uploadFilePath,0777,true);  }
+            #if (!is_dir($this->uploadFilePath)) {  mkdir($this->uploadFilePath,0777,true);  }
             $file = $request->file;
             $destinationPath = public_path().$this->uploadFilePath;
             $extension = $file->getClientOriginalExtension();
             $fileName = md5(rand(11111, 99999)) . '.' . $extension; // renameing image
             $file->move($destinationPath, $fileName); // uploading file to given path
-            $paper->paper_pdf = $this->uploadFilePath.$fileName;
+            $paper->paper_pdf = $this->uploadFilePath.'/'.$fileName;
         }
 
         if($paper->save()){
@@ -131,17 +132,17 @@ class PaperManageController extends Controller
         $paper->paper_published_url = $request->paper_published_url;
         $paper->paper_published_at = $request->paper_published_at;
         $paper->paper_type = $request->paper_type;
-        $paper->paper_publish_date =  $request->paper_publish_date;
+        $paper->paper_publish_date =  Carbon::parse($request->paper_publish_date);
         $paper->paper_cite = $request->paper_cite;
         #$paper->paper_meta_data = str_slug($request->paper_title).time();
         if( $request->hasFile('file')) {
-            if (!is_dir($this->uploadFilePath)) {  mkdir($this->uploadFilePath,0777,true);  }
+           # if (!is_dir($this->uploadFilePath)) {  mkdir($this->uploadFilePath,0777,true);  }
             $file = $request->file;
             $destinationPath = public_path().$this->uploadFilePath;
             $extension = $file->getClientOriginalExtension();
             $fileName = md5(rand(11111, 99999)) . '.' . $extension; // renameing image
             $file->move($destinationPath, $fileName); // uploading file to given path
-            $paper->paper_pdf = $this->uploadFilePath.$fileName;
+            $paper->paper_pdf = $this->uploadFilePath.'/'.$fileName;
         }
 
         if($paper->save()){

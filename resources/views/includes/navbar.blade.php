@@ -47,7 +47,7 @@
                                     </div>
                                 </li>
 
-                                
+
                                 @if(Auth::user())
                                 <li class="nav-item dropdown dropdown-slide {{ Request::is('profile')? 'active' : '' }}">
                                     <a class="nav-link dropdown-toggle" href="{{route('profile.index')}}"
