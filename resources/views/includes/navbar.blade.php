@@ -12,13 +12,13 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto main-nav ">
-                                <li class="nav-item active">
+                                <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
 
 
 
-                                <li class="nav-item dropdown dropdown-slide">
+                                <li class="nav-item dropdown dropdown-slide {{ Request::is('faculty')|| Request::is('members') ? 'active' : '' }}">
                                     <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Members <span><i class="fa fa-angle-down"></i></span>
                                     </a>
@@ -30,10 +30,13 @@
                                 </li>
 
 
-                                <li class="nav-item"><a class="nav-link" href="{{ route('category.categoryList') }}">Category</a></li>
+                                <li class="nav-item  {{ Request::is('category*')? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('category.categoryList') }}">
+                                        Category</a>
+                                </li>
 
 
-                                <li class="nav-item dropdown dropdown-slide">
+                                <li class="nav-item dropdown dropdown-slide {{ Request::is('papers*')? 'active' : '' }}">
                                     <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Archive <span><i class="fa fa-angle-down"></i></span>
                                     </a>
@@ -47,7 +50,7 @@
 
 
                                 @if(Auth::user())
-                                <li class="nav-item dropdown dropdown-slide">
+                                <li class="nav-item dropdown dropdown-slide {{ Request::is('profile')? 'active' : '' }}">
                                     <a class="nav-link dropdown-toggle" href="{{route('profile.index')}}"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ Auth::user()->name }} <span><i class="fa fa-angle-down"></i></span>
@@ -59,7 +62,7 @@
                                            <hr>
                                         <a class="dropdown-item" href="{{ route('admin.user.allUser') }}">All User</a>
                                         <a class="dropdown-item" href="{{ route('paper.allPaper') }}">All Paper</a>
-                                        <a class="dropdown-item" href="{{ route('category.index') }}">All Category</a>
+                                        <a class="dropdown-item" href="{{ route('profile.index') }}">All Category</a>
                                         @endif
                                     </div>
                                 </li>
