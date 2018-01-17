@@ -33,6 +33,9 @@
 <script src="{!! asset('plugins/bootstrap/dist/js/popper.min.js') !!}"></script>
 <script src="{!! asset('plugins/bootstrap/dist/js/bootstrap.bundle.js') !!}"></script>
 <script src="{!! asset('plugins/smoothscroll/SmoothScroll.min.js') !!}"></script>
+<!-- toastr -->
+{!! Html::script('assets/toastr/toastr.min.js') !!}
+@include('includes.toastr')
 
 @yield('script')
 

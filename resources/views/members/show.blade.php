@@ -85,7 +85,7 @@
                     </div>
                     <div class="pagination justify-content-center">
                         <nav aria-label="Page navigation example">
-                            {!! $profiles->links() !!}
+                            {!! $profiles->links('vendor.pagination.bootstrap-4') !!} <br>
                         </nav>
                     </div>
 

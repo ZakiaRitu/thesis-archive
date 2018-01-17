@@ -13,11 +13,11 @@
     <!-- Font Awesome -->
     <link href="{!! asset('plugins/font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet">
 
-    {{--<link href="{!! asset('plugins/slick-carousel/slick/slick.css') !!}" rel="stylesheet">--}}
-    {{--<link href="{!! asset('plugins/slick-carousel/slick/slick-theme.css') !!}" rel="stylesheet">--}}
-    {{--<link href="{!! asset('plugins/fancybox/jquery.fancybox.pack.css') !!}" rel="stylesheet">--}}
-    {{--<link href="{!!  asset('plugins/jquery-nice-select/css/nice-select.css') !!}" rel="stylesheet">--}}
-    {{--<link href="{!! asset('plugins/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css') !!}" rel="stylesheet">--}}
+    <!-- Toastr style -->
+    {!! Html::style('assets/toastr/toastr.min.css') !!}
+
+
+
     @yield('style')
     <!-- CUSTOM CSS -->
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">

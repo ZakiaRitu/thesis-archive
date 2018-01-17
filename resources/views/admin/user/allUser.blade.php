@@ -1,86 +1,61 @@
 @extends('layouts.default')
 @section('content')
-    <!--=================================
-             Page Title
-       ==================================-->
-    <section class="page-title">
-        <!-- Container Start -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
-                    <!-- Title text -->
-                    <h3>{!! $title  or \App\ProjectSettings\Setting::$projectName!!}</h3>
-                </div>
-            </div>
-        </div>
-        <!-- Container End -->
-    </section>
-    <!--==================================
-    =            Blog Section            =
-    ===================================-->
+
 
     <section class="section-sm">
         <div class="container">
 
             <div class="row">
 
-                @if(count($profiles)== 0)
-                    <div class="col-md-12">
-                        <div class="search-result bg-gray">
-                            <h2 class="text-center">No Data Found</h2>
-                        </div>
-                    </div>
-                @endif
-
                 <div class="col-md-12">
-                    <div class="product-grid-list">
-                        <div class="row mt-30">
+                    <div class="search-result bg-gray">
+                        <h2 class="text-center">{!! $title or '' !!}</h2><hr>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                            <div class="col-sm-12 col-lg-12 col-md-6">
-                                    <!-- product card -->
-                                    <div class="product-item bg-light">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <table id="datatable" class="table table-striped table-bordered">
-                                                   <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Email</th>
-                                                            <th>Status</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                     <tbody>
-                                                        @foreach($profiles as $profile)
-                                                            <tr>
-                                                                <td>{{ $profile->user->name}}</td>
-                                                                <td>{{ $profile->user->email }}</td>
-                                                                <td>{{ $profile->status }}</td>
-                                                                <td class="actions">
-                                                                    <a href="{{route('admin.user.delete', $profile->user_id)}}" class="btn btn-primary" >Delete</a>
+                            @foreach($profiles as $profile)
+                                <tr>
+                                    <td>{{ $profile->user->name}}</td>
+                                    <td>{{ $profile->user->email }}</td>
+                                    <td>{{ $profile->status }}</td>
 
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                     </tbody>
-                                               </table>
+                                    <td>
+                                        @if($profile->is_admin != 'YES')
+                                        <a href="#" class="btn btn-danger btn-xs btn-archive deleteBtn"
+                                           data-toggle="modal" data-target="#deleteConfirm"
+                                           deleteId="{!! $profile->user_id !!}">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                        @else
+                                            ---
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+
+                        <div class="pagination justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                {{ $profiles->links('vendor.pagination.bootstrap-4') }}
+                                <br>
+                            </nav>
                         </div>
+
+
                     </div>
-
-
-                    <div class="pagination justify-content-center">
-                        <nav aria-label="Page navigation example">
-                            {!! $profiles->links() !!}
-                        </nav>
-                    </div>
-
                 </div>
+
             </div>
         </div>
         </div>
@@ -88,10 +63,31 @@
     <br><br>
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-crenter" id="myModalLabel">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete?
+                </div>
+                <div class="modal-footer">
+                    {!! Form::open(array('route' => array('admin.user.delete', 0), 'method'=> 'delete', 'class' => 'deleteForm')) !!}
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    {!! Form::submit('Yes, Delete', array('class' => 'btn btn-success')) !!}
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 @stop
 @section('style')
     {{--include external css here if you neeed--}}
-
     <style>
         select#inputCategory4 {
             border: 1px solid #fff;
@@ -108,9 +104,8 @@
     </style>
 @stop
 @section('script')
-    {{--include external js here if you neeed--}}
-    <script type="text/javascript">
 
+    <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
             /* do not add datatable method/function here , its always loaded from footer -- masiur */
             $(document).on("click", ".deleteBtn", function() {
@@ -121,6 +116,7 @@
 
         });
     </script>
+
 
 @stop
 

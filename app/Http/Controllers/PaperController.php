@@ -17,7 +17,7 @@ class PaperController extends Controller
     public function allPaperList(){
         $categories = Category::pluck( 'cat_name', 'id');
         $papers = Paper::orderBY('created_at','desc')->paginate(12);
-        return view('paper.index', compact( 'papers','categories'));
+        return view('paper.index', compact( 'papers','categories'))->with('title', 'Papers (Conference/Journal)');
     }
 
 
@@ -25,7 +25,7 @@ class PaperController extends Controller
     {
         $categories = Category::pluck( 'cat_name', 'id');
         $papers = Paper::where('paper_type','=','CONFERENCE')->orderBY('created_at','desc')->paginate(12);
-        return view('paper.index', compact( 'papers','categories'));
+        return view('paper.index', compact( 'papers','categories'))->with('title', 'Conference Paper');
 
     }
 
@@ -34,7 +34,7 @@ class PaperController extends Controller
     {
         $categories = Category::pluck( 'cat_name', 'id');
         $papers = Paper::where('paper_type','=','JOURNAL')->orderBY('created_at','desc')->paginate(12);
-        return view('paper.index', compact( 'papers','categories'));
+        return view('paper.index', compact( 'papers','categories'))->with('title', 'Journal Paper');
 
     }
 
@@ -56,8 +56,11 @@ class PaperController extends Controller
             $papers = Paper::orderBY('created_at','desc')->paginate(12);
         }
 
+
         $categories = Category::pluck( 'cat_name', 'id');
-        return view('paper.index', compact( 'papers','categories'));
+
+
+        return view('paper.index', compact( 'papers','categories'))->with('title', 'Papers (Conference/Journal)');
     }
 
 

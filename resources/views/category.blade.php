@@ -75,7 +75,8 @@
                     </div>
                     <div class="pagination justify-content-center">
                         <nav aria-label="Page navigation example">
-                            {!! $categories->links() !!}
+                            {!! $categories->links('vendor.pagination.bootstrap-4') !!}
+                            <br>
                         </nav>
                     </div>
 

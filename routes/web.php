@@ -3,6 +3,28 @@
 Route::get('/', 'HomeController@index')->name('index');
 Auth::routes();
 
+
+
+Route::get('faculty', ['as'=> 'user.faculty','uses' => 'MembersController@facultyMembers']);
+Route::get('members', ['as'=> 'user.members','uses' => 'MembersController@otherMembers']);
+
+
+Route::get('papers', ['as'=> 'paper.allPaperList','uses' => 'PaperController@allPaperList']);
+Route::get('papers', ['as'=> 'paper.paperSearch','uses' => 'PaperController@paperSearch']);
+Route::get('papers/details/{paper_meta_data}', ['as'=> 'paper.paperDetails','uses' => 'PaperController@paperDetails']);
+Route::get('papers/archive/{month}/{year}', ['as'=> 'paper.archivedPaper','uses' => 'PaperController@archivedPaper']);
+
+Route::get('papers/conference', ['as'=> 'paper.conference','uses' => 'PaperController@conferencePaper']);
+Route::get('papers/journal', ['as'=> 'paper.journal','uses' => 'PaperController@journalPaper']);
+
+Route::get('category/list', ['as'=> 'category.categoryList','uses' => 'CategoryController@categoryList']);
+Route::get('category/{cat_meta_data}/paper', ['as'=> 'paper.categoryWisePaper','uses' => 'PaperController@categoryWisePaper']);
+Route::get('user/profile/{user_meta_data}/paper', ['as'=> 'paper.userWisePaper','uses' => 'PaperController@userWisePaper']);
+
+
+
+
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('logout', 'Auth\LoginController@logout');
     Route::get('profile', ['as'=> 'profile.index','uses' => 'ProfileController@index']);
@@ -11,32 +33,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('photo-update', ['as'=> 'profile.updatePhoto','uses' => 'ProfileController@updatePhoto']);
 
 
-    Route::get('faculty', ['as'=> 'user.faculty','uses' => 'MembersController@facultyMembers']);
-    Route::get('members', ['as'=> 'user.members','uses' => 'MembersController@otherMembers']);
-
-
-    Route::get('papers', ['as'=> 'paper.allPaperList','uses' => 'PaperController@allPaperList']);
-    Route::get('papers', ['as'=> 'paper.paperSearch','uses' => 'PaperController@paperSearch']);
-    Route::get('papers/details/{paper_meta_data}', ['as'=> 'paper.paperDetails','uses' => 'PaperController@paperDetails']);
-    Route::get('papers/archive/{month}/{year}', ['as'=> 'paper.archivedPaper','uses' => 'PaperController@archivedPaper']);
-
-    Route::get('papers/conference', ['as'=> 'paper.conference','uses' => 'PaperController@conferencePaper']);
-    Route::get('papers/journal', ['as'=> 'paper.journal','uses' => 'PaperController@journalPaper']);
-
-    Route::get('category/list', ['as'=> 'category.categoryList','uses' => 'CategoryController@categoryList']);
-    Route::get('category/{cat_meta_data}/paper', ['as'=> 'paper.categoryWisePaper','uses' => 'PaperController@categoryWisePaper']);
-    Route::get('user/profile/{user_meta_data}/paper', ['as'=> 'paper.userWisePaper','uses' => 'PaperController@userWisePaper']);
-
-
-
-
-
 
     Route::get('allUser', ['as'=> 'admin.user.allUser','uses' => 'UserController@allUser']);
-    Route::get('allUser/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
-
+    Route::delete('allUser/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
 
     ##
+    Route::get('allPaper', ['as' => 'paper.allPaper', 'uses' => 'PaperManageController@allPaper']);
     Route::get('mypaper', ['as' => 'paper.index', 'uses' => 'PaperManageController@index']);
     Route::get('mypaper/create', ['as' => 'paper.create', 'uses' => 'PaperManageController@create']);
     Route::post('mypaper', ['as' => 'paper.store', 'uses' => 'PaperManageController@store']);

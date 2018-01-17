@@ -36,10 +36,15 @@ class PaperManageController extends Controller
     public function index()
     {
         $paperIds = PaperUser::where('user_id', \Auth::user()->id)->pluck('paper_id');
-        $papers = Paper::whereIn('id',$paperIds)->get();
+        $papers = Paper::whereIn('id',$paperIds)->paginate(30);
         return view('paper.mypapers',compact('papers'))->with('title','My Papers List');
     }
 
+
+    public function allPaper(){
+        $papers = Paper::paginate(30);
+        return view('paper.mypapers',compact('papers'))->with('title','All Papers List');
+    }
 
 
 

@@ -18,7 +18,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(20);
         return view('category.index',compact('categories'))->with('title','Category List');
     }
 
@@ -47,7 +47,7 @@ class CategoryController extends Controller
 
     public function edit($cat_meta_data)
     {
-         $category = Category::where('cat_,eta_data',$cat_meta_data)->first();
+         $category = Category::where('cat_meta_data',$cat_meta_data)->first();
          return view('category.edit', compact('category'))->with('title', 'Edit Category');
     }
 
@@ -56,7 +56,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, $cat_meta_data)
     {
-        $category = Category::where('cat_,eta_data',$cat_meta_data)->first();
+        $category = Category::where('cat_meta_data',$cat_meta_data)->first();
         $category->cat_name = $request->cat_name;
         if($category->save()){
             return redirect()->back()->with('success', 'Category Updated Successfully.');
@@ -66,9 +66,9 @@ class CategoryController extends Controller
     }
 
 
-    public function delete($cat_meta_data)
+    public function destroy($cat_meta_data)
     {
-        $category = Category::where('cat_,eta_data',$cat_meta_data)->first();
+        $category = Category::where('cat_meta_data',$cat_meta_data)->first();
         if($category->delete()){
            return redirect()->back()->with('success', 'Category Deleted Successfully.');
         }else{

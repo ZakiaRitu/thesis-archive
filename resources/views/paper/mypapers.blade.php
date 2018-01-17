@@ -22,21 +22,36 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1 ?>
                                 @foreach($papers as $paper)
                                     <tr>
-                                        <th scope="row">{!! $i++ !!}</th>
-                                        <td>{!! $paper->paper_title !!}</td>
-                                        <td>
-                                            <a class="btn btn-warning btn-xs btn-archive Editbtn" href="{!!route('paper.edit',$paper->paper_meta_data)!!}"  style="margin-right: 3px;"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                        <th scope="row">{!! $paper->id !!}</th>
+                                        <td><a style="color: dodgerblue" href="{{route('paper.paperDetails',$paper->paper_meta_data)}}">
+                                                {!! $paper->paper_title !!}</a>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-danger btn-xs btn-archive deleteBtn" data-toggle="modal" data-target="#deleteConfirm" deleteId="{!! $paper->paper_meta_data !!}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <a class="btn btn-warning btn-xs btn-archive Editbtn"
+                                               href="{!!route('paper.edit',$paper->paper_meta_data)!!}"
+                                               style="margin-right: 3px;"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-danger btn-xs btn-archive deleteBtn"
+                                               data-toggle="modal" data-target="#deleteConfirm"
+                                               deleteId="{!! $paper->paper_meta_data !!}">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                  @endforeach
                             </tbody>
                         </table>
+
+
+                        <div class="pagination justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                {!! $papers->links('vendor.pagination.bootstrap-4') !!}
+                                <br>
+                            </nav>
+                        </div>
 
                     </div>
                 </div>

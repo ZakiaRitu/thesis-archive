@@ -124,11 +124,11 @@ label {
   color: #666;
 }
 
-ul.pagination li {
+ul.pagination1 li {
   margin-right: 10px;
 }
 
-ul.pagination li a {
+ul.pagination1 li a {
   border-radius: 3px !important;
   font-size: 16px;
   padding: 0;
@@ -141,7 +141,7 @@ ul.pagination li a {
   color: #666;
 }
 
-ul.pagination .active a {
+ul.pagination1 .active a {
   background-color: #5672f9 !important;
   color: #fff !important;
   border-color: transparent !important;
@@ -562,11 +562,11 @@ button {
   margin-bottom: 0;
 }
 
-ul.pagination li {
+ul.pagination1 li {
   margin-right: 10px;
 }
 
-ul.pagination li a {
+ul.pagination1 li a {
   font-weight: 600;
   border-radius: 3px !important;
   font-size: 16px;
@@ -580,13 +580,13 @@ ul.pagination li a {
   color: #666;
 }
 
-ul.pagination li a:hover {
+ul.pagination1 li a:hover {
   background-color: #5672f9 !important;
   color: #fff !important;
   border-color: transparent !important;
 }
 
-ul.pagination .active a {
+ul.pagination1 .active a {
   background-color: #5672f9 !important;
   color: #fff !important;
   border-color: transparent !important;

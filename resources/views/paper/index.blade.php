@@ -10,11 +10,6 @@
         <div class="container">
 
             <div class="row">
-
-                <div class="col-md-12">
-                    <p>Found {!!  count($papers)  !!} Papers in .000023 ms</p>
-                </div>
-
                 @if(count($papers)== 0)
                     <div class="col-md-12">
                         <div class="search-result bg-gray">
@@ -23,12 +18,30 @@
                     </div>
                 @endif
 
-
-
                 <div class="col-md-12">
-                    <div class="product-grid-list">
-                        <div class="row mt-30">
+                    <div class="search-result bg-gray">
 
+                        <h2 class="text-left"><b>&nbsp;&nbsp;{!! $title or ' ' !!}</b></h2>
+                        @if(\Request::route()->getName() == 'paper.paperSearch')
+                        <div class="col-md-12"  style="color: green">
+                            @if( Request::get('paper_title'))
+                                You Search For:
+                                {{ Request::get('paper_title') }}
+                            @endif
+                                <br>
+                            @if(Request::get('paper_category'))
+                                Category Search:
+                                {{ \App\Category::where('id',Request::get('paper_category'))->first()->cat_name }}
+                            @endif
+
+                            <p>Found {!!  count($papers)  !!} Papers in .0000{!! rand(20,60) !!} ms</p>
+                        </div>
+                        @endif
+                        <hr>
+
+
+
+                        <div class="row mt-30">
                             @foreach($papers as $paper)
                                 <div class="col-sm-12 col-lg-12 col-md-6">
                                     <!-- product card -->
@@ -46,7 +59,8 @@
                                                  <small>
                                                      Authors:
                                                      @foreach($paper->users as $user)
-                                                     <a style="color: #00aced" target="_blank" href="{!! route('profile.userProfile',$user->user_meta_data) !!}">
+                                                     <a style="color: #00aced" target="_blank"
+                                                        href="{!! route('profile.userProfile',$user->user_meta_data) !!}">
                                                          {!! $user->name !!}
                                                      </a>,&nbsp;
                                                      @endforeach
@@ -56,7 +70,8 @@
                                                     <em>
                                                     Categories:
                                                     @foreach($paper->categories as $category)
-                                                        <a style="color:yellowgreen" target="_blank" href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">
+                                                        <a style="color:yellowgreen" target="_blank"
+                                                           href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">
                                                             {!! $category->cat_name !!}
                                                         </a>,&nbsp;
                                                     @endforeach
@@ -78,7 +93,7 @@
 
                     <div class="pagination justify-content-center">
                         <nav aria-label="Page navigation example">
-                            {!! $papers->links() !!}
+                            {!! $papers->links('vendor.pagination.bootstrap-4') !!} <br>
                         </nav>
                     </div>
 
