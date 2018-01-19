@@ -38,8 +38,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-    Route::get('allUser', ['as'=> 'admin.user.allUser','uses' => 'UserController@allUser']);
-    Route::delete('allUser/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
+    Route::get('user/approved', ['as'=> 'admin.user.allUser','uses' => 'UserController@allUser']);
+    Route::get('user/pending', ['as'=> 'admin.user.pending','uses' => 'UserController@pendingUsers']);
+    Route::get('user/pending/approved/{user_id}', ['as'=> 'admin.user.pendingApproved','uses' => 'UserController@pendingApproved']);
+    Route::delete('user/approved/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
 
     ##Paper
     Route::get('allPaper', ['as' => 'paper.allPaper', 'uses' => 'PaperManageController@allPaper']);

@@ -12,8 +12,8 @@
                     <div class="search-result bg-gray">
                         <h2 class="text-left">User Panel</h2>
                         <hr>
-                        <h3><a href="#" style="color: dodgerblue"><i class="fa fa-check-square-o"></i> Approved Users</a><br></h3>
-                        <h3><a href="{!! route('admin.user.pending') !!}"><i class="fa fa-history"></i> Pending Users</a><br></h3>
+                        <h3><a href="{!! route('admin.user.allUser') !!}"><i class="fa fa-check-square-o"></i> Approved Users</a><br></h3>
+                        <h3><a href="#" style="color: dodgerblue"><i class="fa fa-history"></i> Pending Users</a><br></h3>
 
                     </div>
                 </div>
@@ -29,27 +29,34 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Approve?</th>
                                 <th>#</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($profiles as $profile)
-                                @if($profile->user->is_approved == 'YES')
-                                <tr>
-                                    <td>{{ $profile->user->name}}</td>
-                                    <td>{{ $profile->user->email }}</td>
-                                    <td>
-                                        @if($profile->is_admin != 'YES')
-                                        <a href="#" class="btn btn-danger btn-sm btn-archive deleteBtn"
-                                           data-toggle="modal" data-target="#deleteConfirm"
-                                           deleteId="{!! $profile->user_id !!}">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </a>
-                                        @else
-                                            ---
-                                        @endif
-                                    </td>
-                                </tr>
+                                @if($profile->user->is_approved == 'NO')
+                                    <tr>
+                                        <td>{{ $profile->user->name}}</td>
+                                        <td>{{ $profile->user->email }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.user.pendingApproved', $profile->user_id) }}"
+                                               class="btn btn-info btn-sm">
+                                                Approve
+                                            </a>
+                                        </td>
+                                        <td>
+                                            @if($profile->is_admin != 'YES')
+                                                <a href="#" class="btn btn-danger btn-sm btn-archive deleteBtn"
+                                                   data-toggle="modal" data-target="#deleteConfirm"
+                                                   deleteId="{!! $profile->user_id !!}">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            @else
+                                                ---
+                                            @endif
+                                        </td>
+                                    </tr>
                                 @endif
                             @endforeach
                             </tbody>

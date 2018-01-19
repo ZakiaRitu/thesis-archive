@@ -59,10 +59,10 @@
                                         <a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a>
                                        @if(Auth::user()->profile->is_admin == 'YES')
                                            <hr>
-                                        <a class="dropdown-item" href="{{ route('admin.user.allUser') }}">All User</a>
-                                        <a class="dropdown-item" href="{{ route('paper.allPaper') }}">All Paper</a>
-                                        <a class="dropdown-item" href="{{ route('profile.index') }}">All Category</a>
+                                        <a class="dropdown-item" href="{{ route('paper.allPaper') }}">Paper Section</a>
+                                        <a class="dropdown-item" href="{{ route('category.index') }}">Category Section</a>
                                         <a class="dropdown-item" href="{{ route('teacher.create') }}">Faculty Section</a>
+                                        <a class="dropdown-item" href="{{ route('admin.user.allUser') }}">Other Users Section</a>
                                         @endif
                                     </div>
                                 </li>

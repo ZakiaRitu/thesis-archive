@@ -9,7 +9,7 @@
 
                 <div class="col-md-12">
                     <div class="search-result bg-gray">
-                        <h2 class="text-center">{!! $title or '' !!}
+                        <h2 class="text-left">{!! $title or '' !!}
                         <a href="{{ route('category.create') }}" class="btn btn-info btn-xs btn-archive">Create New Category</a></h2>
 
                         <hr>
