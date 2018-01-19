@@ -4,8 +4,14 @@
 
 <!-- Complete Name -->
     <div class="form-group">
-        {!! Form::label('name', "Complete Name", array('class' => 'control-label')) !!}
-        {!! Form::text('name', $user->name, array('class' => 'form-control', 'placeholder' => 'Enter Name Here..', 'disabled')) !!}
+        {!! Form::label('first_name', "First Name", array('class' => 'control-label')) !!}
+        {!! Form::text('first_name', $user->first_name, array('class' => 'form-control', 'placeholder' => 'No Information Found', 'disabled')) !!}
+    </div>
+
+
+    <div class="form-group">
+        {!! Form::label('last_name', "Last Name", array('class' => 'control-label')) !!}
+        {!! Form::text('last_name', $user->last_name, array('class' => 'form-control', 'placeholder' => 'No Information Found', 'disabled')) !!}
     </div>
 
     <!-- Email -->

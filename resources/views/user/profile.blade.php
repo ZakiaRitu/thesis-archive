@@ -45,15 +45,16 @@
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>
-						<li class="active" ><a href=""><i class="fa fa-user"></i>About Me</a></li>
 							@if(Auth::user()->id == $user->id)
-							<li><a href="{!! route('paper.index') !!}"><i class="fa fa-user"></i> My Papers</a></li>
+								<li class="active" ><a href=""><i class="fa fa-user"></i>About Me</a></li>
+							    <li><a href="{!! route('paper.index') !!}"><i class="fa fa-user"></i> My Papers</a></li>
+								<li><a  href="{{ route('logout') }}"><i class="fa fa-key"></i>Logout</a></li>
 							@else
+								<li class="active" ><a href=""><i class="fa fa-user"></i>About {!! $user->first_name !!}</a></li>
 								<li><a href="{!! route('paper.userWisePaper',$user->user_meta_data) !!}"><i class="fa fa-user"></i>
-										{!! $user->name !!} Papers</a>
+										{!! $user->first_name !!}'s Papers</a>
 								</li>
 						    @endif
-							<li><a  href="{{ route('logout') }}"><i class="fa fa-key"></i>Logout</a></li>
 						</ul>
 					</div>
 				</div>

@@ -72,7 +72,7 @@ class PaperController extends Controller
         $paperIds = CategoryPaper::where('cat_id',$category->id)->pluck('paper_id');
         $papers = Paper::whereIn('id', $paperIds)->orderBY('created_at','desc')->paginate(12);
         $categories = Category::pluck( 'cat_name', 'id');
-        return view('paper.index', compact( 'papers','categories'));
+        return view('paper.index', compact( 'papers','categories'))->with('title', 'Papers of ['. ucwords($category->cat_name.'] Category'));
     }
 
 
@@ -83,7 +83,7 @@ class PaperController extends Controller
         $paperIds = PaperUser::where('user_id',$user->id)->pluck('paper_id');
         $papers = Paper::whereIn('id', $paperIds)->orderBY('created_at','desc')->paginate(12);
         $categories = Category::pluck( 'cat_name', 'id');
-        return view('paper.index', compact( 'papers','categories'));
+        return view('paper.index', compact( 'papers','categories'))->with('title', 'Papers of ['. ucwords($user->name.']'));
     }
 
 

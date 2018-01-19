@@ -78,7 +78,9 @@ class ProfileController extends Controller
     public function updateInfo(Request $request){
             //return $request->all();
             $user = User::findOrFail(Auth::user()->id);
-            $user->name = $request->name;
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->name =  $request->first_name.' '.$request->last_name;
             if($user->save()){
                 $profile = Profile::where('user_id',Auth::user()->id)->first();
                 $profile->phone_num = $request->phone_num;

@@ -44,7 +44,7 @@
         }
 
         .footer-bottom {
-            position: fixed;
+            /*position: fixed;*/
             right: 0;
             bottom: 0;
             left: 0;

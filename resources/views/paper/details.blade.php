@@ -10,7 +10,7 @@
                     <!-- Article 01 -->
                     <article>
                         <!-- Post Title -->
-                        <h3>{!! $paper->paper_title !!}</h3>
+                        <h2>{!! $paper->paper_title !!}</h2>
                         <ul class="list-inline">
                             <li class="list-inline-item">by
                             @foreach($paper->users as $user)
@@ -23,25 +23,27 @@
                             <li class="list-inline-item">{!! $paper->created_at->formatLocalized('%A %d %B %Y'); !!}</li>
                         </ul>
 
-                        Categories:
                         <em>
                             @foreach($paper->categories as $category)
-                                <a style="color:yellowgreen" target="_blank" href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">
-                                    {!! $category->cat_name !!}
-                                </a>,&nbsp;
+                                <a href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}" class="tag">
+                                   <b> {!! $category->cat_name !!}</b>
+                                </a>
                             @endforeach
                         </em><br>
 
                         <!-- Post Description -->
-                        <p class=""><b><em>Abstract: &nbsp;</em></b><br>{!! $paper->paper_abstract !!}</p>
-                        <p class=""><b>Conference Name: &nbsp;</b><br>{!! $paper->paper_published_at !!}</p>
-                        <p class=""><b>Published Date: &nbsp;</b><br>{!! $paper->paper_publish_date !!}</p>
+                        <h6 class=""><b>Abstract:</b><br>{!! $paper->paper_abstract !!}</h6><br>
+                        <h6 class=""><b>Conference Name: &nbsp;</b><br>{!! $paper->paper_published_at !!}</h6><br>
+                        <h6 class=""><b>Published Date: &nbsp;</b><br>{!! $paper->paper_publish_date !!}</h6>
                         @if(Auth::user())
-                            <p class=""><b>Download File: &nbsp;</b><br>{!! link_to_asset($paper->paper_pdf) !!}</p>
+                            <h6 class=""><b>Download File: &nbsp;</b>
+                                <a href="{!! asset($paper->paper_pdf) !!}">
+                                    <i class="fa fa-cloud-download fa-3x" aria-hidden="true"></i>
+                                </a>
+                            </h6>
                         @endif
-                        <p class=""><b>Cite: &nbsp;</b><br> </p>
+                        <br><h6 class=""><b>Cite:</b></h6>
                         <div class="w3-panel w3-leftbar w3-light-grey">
-                            <p class="w3-xlarge w3-serif">
                                 <i><br>
                                     @if($paper->paper_cite)
                                        <p> "{!! $paper->paper_cite !!}"</p>
@@ -49,7 +51,6 @@
                                         "No Information Found."
                                     @endif
                                 </i>
-                            </p>
                         </div>
                         <!-- Read more button -->
                     </article>
@@ -110,6 +111,63 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 
+
+        .tags {
+            list-style: none;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .tags li {
+            float: left;
+        }
+
+        .tag {
+            background: #eee;
+            border-radius: 3px 0 0 3px;
+            color: #999;
+            display: inline-block;
+            height: 26px;
+            line-height: 26px;
+            padding: 0 20px 0 23px;
+            position: relative;
+            margin: 0 10px 10px 0;
+            text-decoration: none;
+            -webkit-transition: color 0.2s;
+        }
+
+        .tag::before {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+            content: '';
+            height: 6px;
+            left: 10px;
+            position: absolute;
+            width: 6px;
+            top: 10px;
+        }
+
+        .tag::after {
+            background: #fff;
+            border-bottom: 13px solid transparent;
+            border-left: 10px solid #eee;
+            border-top: 13px solid transparent;
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .tag:hover {
+            background-color: crimson;
+            color: white;
+        }
+
+        .tag:hover::after {
+            border-left-color: crimson;
+        }
     </style>
 @stop
 @section('script')

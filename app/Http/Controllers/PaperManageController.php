@@ -56,7 +56,7 @@ class PaperManageController extends Controller
             'CONFERENCE' => 'CONFERENCE',
         ];
         $category = Category::pluck('cat_name','cat_name');
-        $users    = User::pluck('name','id');
+        $users    = User::where('is_approved','YES')->pluck('name','id');
         return view('paper.create', compact('category','users','paperType'))
             ->with('title','Create New Paper');
     }
@@ -116,7 +116,7 @@ class PaperManageController extends Controller
             'CONFERENCE' => 'CONFERENCE',
         ];
         $category = Category::pluck('cat_name','id');
-        $users    = User::pluck('name','id');
+        $users    = User::where('is_approved','YES')->pluck('name','id');
 
 
         return view('paper.edit', compact('category','users','paper','paperType'))

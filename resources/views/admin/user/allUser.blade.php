@@ -9,13 +9,14 @@
 
                 <div class="col-md-12">
                     <div class="search-result bg-gray">
-                        <h2 class="text-center">{!! $title or '' !!}</h2><hr>
+                        <h2 class="text-left">{!! $title or '' !!}</h2><hr>
                         <table class="table">
                             <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Status</th>
+                                <th>IS Approved</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -26,6 +27,7 @@
                                     <td>{{ $profile->user->name}}</td>
                                     <td>{{ $profile->user->email }}</td>
                                     <td>{{ $profile->status }}</td>
+                                    <td>{{ $profile->user->is_approved }}</td>
 
                                     <td>
                                         @if($profile->is_admin != 'YES')

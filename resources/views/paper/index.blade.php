@@ -51,31 +51,26 @@
 
                                             </div>
                                             <div class="card-body">
-                                                <h3 class="card-title">
+                                                <h2 class="card-title">
                                                     <a href="{!! route('paper.paperDetails',$paper->paper_meta_data) !!}">
                                                         {!! $paper->paper_title !!}
                                                     </a><br>
-                                                </h3>
+                                                </h2>
                                                  <small>
-                                                     Authors:
                                                      @foreach($paper->users as $user)
                                                      <a style="color: #00aced" target="_blank"
                                                         href="{!! route('profile.userProfile',$user->user_meta_data) !!}">
                                                          {!! $user->name !!}
                                                      </a>,&nbsp;
                                                      @endforeach
-                                                 </small>
-                                                <br>
+                                                 </small><br>
                                                 <small>
-                                                    <em>
-                                                    Categories:
                                                     @foreach($paper->categories as $category)
-                                                        <a style="color:yellowgreen" target="_blank"
+                                                        <a class="tag" target="_blank"
                                                            href="{!! route('paper.categoryWisePaper',$category->cat_meta_data) !!}">
-                                                            {!! $category->cat_name !!}
-                                                        </a>,&nbsp;
+                                                            <b>{!! $category->cat_name !!}</b>
+                                                        </a>
                                                     @endforeach
-                                                    </em>
                                                 </small>
 
                                                 <p class="card-text ">
@@ -118,6 +113,66 @@
         }
         .inputtext4{
             color: #d62170;; !important;
+        }
+    </style>
+    <style>
+
+
+        .tags {
+            list-style: none;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .tags li {
+            float: left;
+        }
+
+        .tag {
+            background: #eee;
+            border-radius: 3px 0 0 3px;
+            color: #999;
+            display: inline-block;
+            height: 26px;
+            line-height: 26px;
+            padding: 0 20px 0 23px;
+            position: relative;
+            margin: 0 10px 10px 0;
+            text-decoration: none;
+            -webkit-transition: color 0.2s;
+        }
+
+        .tag::before {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+            content: '';
+            height: 6px;
+            left: 10px;
+            position: absolute;
+            width: 6px;
+            top: 10px;
+        }
+
+        .tag::after {
+            background: #fff;
+            border-bottom: 13px solid transparent;
+            border-left: 10px solid #eee;
+            border-top: 13px solid transparent;
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .tag:hover {
+            background-color: crimson;
+            color: white;
+        }
+
+        .tag:hover::after {
+            border-left-color: crimson;
         }
     </style>
 @stop

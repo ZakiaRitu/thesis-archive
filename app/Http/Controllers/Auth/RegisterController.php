@@ -49,7 +49,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'status' => 'required',
@@ -72,20 +73,20 @@ class RegisterController extends Controller
 //        ]);
 
         $user = new User();
-        $user->name = $data['name'];
+        $user->first_name = $data['first_name'];
+        $user->last_name = $data['last_name'];
+        $user->name = $data['first_name'].' '.$data['last_name'];
+        $user->is_approved ='NO';
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
         $user->user_meta_data = strtolower(str_slug($data['name']).rand(10000,100000));
         if($user->save()){
             $profile = new Profile();
             $profile->user_id = $user->id;
-            $profile->status = $data['status'];
-            $profile->image =  '/images/anonymous.jpg';
+            $profile->status = 'STUDENT';
+            $profile->image =  '/images/anonymous.png';
             $profile->save();
         }
-
-
-
 
         return $user;
 

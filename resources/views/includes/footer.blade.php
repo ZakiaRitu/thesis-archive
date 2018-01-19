@@ -1,5 +1,5 @@
 <!-- Footer Bottom -->
-<footer class="footer-bottom"  id="footer-test">
+<footer class="footer-bottom"  id="footer-test" style="background-color: #363839">
     <!-- Container Start -->
     <div class="container">
         <div class="row">

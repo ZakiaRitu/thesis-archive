@@ -8,7 +8,7 @@
                         <div class="form-row text-center">
                             <div class="form-group col-md-5">
                                 {{--<input type="text" name="paper_title"  class="form-control" id="inputtext4" placeholder="What are you looking for">--}}
-                                {!! Form::text('paper_title', null, ['class'=>'form-control inputtext4', 'id'=>'inputtext4', 'placeholder' => 'What are you looking for'])  !!}
+                                {!! Form::text('paper_title', null, ['class'=>'form-control inputtext4', 'id'=>'inputtext4', 'placeholder' => 'Search Paper..'])  !!}
                             </div>
                             <div class="form-group col-md-5">
                                 {{--<input type="select" name="paper_category"  class="form-control" id="inputCategory4" placeholder="Category">--}}
