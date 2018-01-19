@@ -62,7 +62,7 @@
                                         <a class="dropdown-item" href="{{ route('paper.allPaper') }}">Paper Section</a>
                                         <a class="dropdown-item" href="{{ route('category.index') }}">Category Section</a>
                                         <a class="dropdown-item" href="{{ route('teacher.create') }}">Faculty Section</a>
-                                        <a class="dropdown-item" href="{{ route('admin.user.allUser') }}">Other Users Section</a>
+                                        <a class="dropdown-item" href="{{ route('admin.user.allUser') }}">Users Section</a>
                                         @endif
                                     </div>
                                 </li>
