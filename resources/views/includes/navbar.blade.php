@@ -32,13 +32,13 @@
 
                                 <li class="nav-item  {{ Request::is('category*')? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('category.categoryList') }}">
-                                        Category</a>
+                                        Archive</a>
                                 </li>
 
 
                                 <li class="nav-item dropdown dropdown-slide {{ Request::is('papers*')? 'active' : '' }}">
                                     <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Archive <span><i class="fa fa-angle-down"></i></span>
+                                        Published Papers <span><i class="fa fa-angle-down"></i></span>
                                     </a>
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu dropdown-menu-right">

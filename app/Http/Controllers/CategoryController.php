@@ -11,7 +11,7 @@ class CategoryController extends Controller
     public function categoryList()
     {
         $categories = Category::paginate(24);
-        return view('category',compact('categories'))->with('title','Category List');
+        return view('category',compact('categories'))->with('title','Choose A Category');
 
     }
 

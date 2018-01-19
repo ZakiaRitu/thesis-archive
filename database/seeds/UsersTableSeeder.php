@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             'is_approved' =>'YES',
             'last_name' => 'Mahadi Hasan',
             'email' => 'nahid.cse@gmail.com',
-            'password' => bcrypt('a'),
+            'password' => bcrypt('123456'),
             'user_meta_data' => 'nahid123'
         ]);
         \App\Profile::create(['user_id' => 1, 'status' => 'FACULTY', 'is_admin'=>'YES', 'image'=>'/images/anonymous.png']);
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Ritu',
             'is_approved' =>'YES',
             'email' => 'zakiaritu.cse@gmail.com',
-            'password' => bcrypt('a'),
+            'password' => bcrypt('123456'),
             'user_meta_data' => 'zakia14051994'
         ]);
         \App\Profile::create(['user_id' => 2, 'status' => 'STUDENT', 'is_admin'=>'YES', 'image'=>'/images/anonymous.png']);

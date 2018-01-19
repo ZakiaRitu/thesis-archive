@@ -45,11 +45,11 @@
                                                                     </b> Papers
                                                                 </a>
                                                             </li><br>
-                                                            <li class="list-inline-item">
+                                                           <!-- <li class="list-inline-item">
                                                                 <a href="#"><i class="fa fa-calendar"></i>
                                                                     Created at : {!! $category->created_at->formatLocalized('%A %d %B %Y'); !!}
                                                                 </a>
-                                                            </li>
+                                                            </li>  -->
                                                         </ul>
                                                     </div>
                                                 </div>

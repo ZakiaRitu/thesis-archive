@@ -45,7 +45,7 @@ class TeacherController extends Controller
             $user->name = $data['first_name'].' '.$data['last_name'];
             $user->is_approved ='YES';
             $user->email = $data['email'];
-            $user->password = bcrypt('a');
+            $user->password = bcrypt('123456');
             $user->user_meta_data = strtolower(str_slug($data['first_name'].$data['last_name']).rand(10000,100000));
             if($user->save()){
                 $profile = new Profile();

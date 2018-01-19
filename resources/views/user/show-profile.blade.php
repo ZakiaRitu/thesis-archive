@@ -1,6 +1,6 @@
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
-    <h3 class="widget-header user"><b>{!! $user->name !!}</b> Information</h3>
+    <h3 class="widget-header user"><b>{!! $user->name !!}</b>'s Information</h3>
 
 <!-- Complete Name -->
     <div class="form-group">

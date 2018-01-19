@@ -2429,6 +2429,7 @@ article.single-post p {
 .footer-bottom .copyright p {
   color: #c7c7c7;
   margin-bottom: 0;
+  text-align: left;
 }
 
 .social-media-icons {
