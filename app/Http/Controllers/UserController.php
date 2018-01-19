@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function allUser(){
         $userIds = User::where('is_approved' , '=', 'YES')->pluck('id');
-        $profiles  = Profile::whereIn('user_id',$userIds)->where('status','STUDENT')->paginate(30);
+        $profiles  = Profile::whereIn('user_id',$userIds)->where('status','STUDENT')->paginate(10);
         return view('admin.user.allUser', compact('profiles'))
             ->with('title','Approved Users');
     }
@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function pendingUsers(){
         $userIds = User::where('is_approved' , '=', 'NO')->pluck('id');
-        $profiles  = Profile::whereIn('user_id',$userIds)->where('status','STUDENT')->paginate(30);
+        $profiles  = Profile::whereIn('user_id',$userIds)->where('status','STUDENT')->paginate(10);
         return view('admin.user.pending', compact('profiles'))
             ->with('title','Pending Users');
     }

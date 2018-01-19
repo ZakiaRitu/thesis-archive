@@ -81,10 +81,8 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
                     </div>
-
 
                     <div class="pagination justify-content-center">
                         <nav aria-label="Page navigation example">
@@ -92,11 +90,12 @@
                         </nav>
                     </div>
 
+
                 </div>
             </div>
         </div>
     </section>
-    <br><br>
+
 @stop
 @section('style')
     {{--include external css here if you neeed--}}

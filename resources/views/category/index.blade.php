@@ -1,18 +1,36 @@
 @extends('layouts.default')
 @section('content')
-
-
     <section class="section-sm">
         <div class="container">
-
             <div class="row">
 
-                <div class="col-md-12">
-                    <div class="search-result bg-gray">
-                        <h2 class="text-left">{!! $title or '' !!}
-                        <a href="{{ route('category.create') }}" class="btn btn-info btn-xs btn-archive">Create New Category</a></h2>
 
-                        <hr>
+
+                <!-- Category Create -->
+                <div class="col-md-4">
+                    <div class="search-result bg-gray">
+                        <h2 class="text-left">New Category</h2><hr>
+
+                        {!! Form::open(array('route' => 'category.store',  'files' => true) ) !!}
+                        <div class="form-group">
+                            {!! Form::label('cat_name', 'Category Name* :', array('class' => 'control-label')) !!}<br/>
+                            {!!Form::text('cat_name', '',array('class' => 'form-control','placeholder' =>  'Category Name here', 'required'))!!}
+                        </div><br/>
+
+                        <div class="form-group">
+                            {!! Form::submit('New Category', array('class' => 'btn btn-primary')) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+                <!--End of Category Create -->
+
+
+
+                <div class="col-md-8">
+                    <div class="search-result bg-gray">
+                        <h2 class="text-left">{!! $title or '' !!}</h2><hr>
                         <table class="table">
                             <thead>
                             <tr>
@@ -43,17 +61,17 @@
                             @endforeach
                             </tbody>
                         </table>
-
-
                         <div class="pagination justify-content-center">
                             <nav aria-label="Page navigation example">
                                 {!! $categories->links('vendor.pagination.bootstrap-4') !!}
                                 <br>
                             </nav>
                         </div>
-
                     </div>
                 </div>
+
+
+
 
             </div>
         </div>

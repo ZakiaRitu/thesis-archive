@@ -10,15 +10,15 @@ class CategoryController extends Controller
 
     public function categoryList()
     {
-        $categories = Category::paginate(24);
-        return view('category',compact('categories'))->with('title','Choose A Category');
+        $categories = Category::paginate(12);
+        return view('category',compact('categories'))->with('title','Choose a Category');
 
     }
 
 
     public function index()
     {
-        $categories = Category::paginate(20);
+        $categories = Category::paginate(10);
         return view('category.index',compact('categories'))->with('title','Category List');
     }
 
@@ -47,8 +47,9 @@ class CategoryController extends Controller
 
     public function edit($cat_meta_data)
     {
+         $categories = Category::paginate(20);
          $category = Category::where('cat_meta_data',$cat_meta_data)->first();
-         return view('category.edit', compact('category'))->with('title', 'Edit Category');
+         return view('category.edit', compact('category','categories'))->with('title', 'Edit Category');
     }
 
 
@@ -59,9 +60,9 @@ class CategoryController extends Controller
         $category = Category::where('cat_meta_data',$cat_meta_data)->first();
         $category->cat_name = $request->cat_name;
         if($category->save()){
-            return redirect()->back()->with('success', 'Category Updated Successfully.');
+            return redirect()->route('category.index')->with('success', 'Category Updated Successfully.');
         }else{
-            return redirect()->back()->with('error', 'Something Went Wrong.');
+            return redirect()->route('category.index')->with('error', 'Something Went Wrong.');
         }
     }
 

@@ -35,7 +35,6 @@
                             </thead>
                             <tbody>
                             @foreach($profiles as $profile)
-                                @if($profile->user->is_approved == 'NO')
                                     <tr>
                                         <td>{{ $profile->user->name}}</td>
                                         <td>{{ $profile->user->email }}</td>
@@ -57,7 +56,6 @@
                                             @endif
                                         </td>
                                     </tr>
-                                @endif
                             @endforeach
                             </tbody>
                         </table>

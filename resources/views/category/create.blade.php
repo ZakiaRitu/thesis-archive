@@ -21,13 +21,9 @@
                             {!!Form::text('cat_name', '',array('class' => 'form-control','placeholder' =>  'Category Name here', 'required'))!!}
                         </div><br/>
 
-
-
                         <div class="form-group">
                             {!! Form::submit('New Category', array('class' => 'btn btn-primary')) !!}
                         </div>
-
-
 
                         {!! Form::close() !!}
 

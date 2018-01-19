@@ -18,18 +18,6 @@
 
 
 
-                                <li class="nav-item dropdown dropdown-slide {{ Request::is('faculty')|| Request::is('members') ? 'active' : '' }}">
-                                    <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Members <span><i class="fa fa-angle-down"></i></span>
-                                    </a>
-                                    <!-- Dropdown list -->
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{!! route('user.faculty') !!}">FACULTY</a>
-                                        <a class="dropdown-item" href="{!! route('user.members') !!}">OTHERS</a>
-                                    </div>
-                                </li>
-
-
                                 <li class="nav-item  {{ Request::is('category*')? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('category.categoryList') }}">
                                         Archive</a>
@@ -48,7 +36,21 @@
                                 </li>
 
 
-                                @if(Auth::user())
+
+                                <li class="nav-item dropdown dropdown-slide {{ Request::is('faculty')|| Request::is('members') ? 'active' : '' }}">
+                                    <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Members <span><i class="fa fa-angle-down"></i></span>
+                                    </a>
+                                    <!-- Dropdown list -->
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{!! route('user.faculty') !!}">FACULTY</a>
+                                        <a class="dropdown-item" href="{!! route('user.members') !!}">OTHERS</a>
+                                    </div>
+                                </li>
+
+
+
+                            @if(Auth::user())
                                 <li class="nav-item dropdown dropdown-slide {{ Request::is('profile')? 'active' : '' }}">
                                     <a class="nav-link dropdown-toggle" href="{{route('profile.index')}}"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,9 +76,11 @@
 
                             @if(Auth::user())
                             <ul class="navbar-nav ml-auto mt-10">
+                                @if(Auth::user()->is_approved = 'YES')
                                 <li class="nav-item">
                                     <a class="nav-link login-button" style="color: #fff" href="{!! route('paper.create') !!}">Add Paper</a>
                                 </li>
+                                @endif
                                 <li class="nav-item">
                                     <a class="nav-link login-button" style="color: #fff" href="{{ route('logout') }}">Logout</a>
                                 </li>
