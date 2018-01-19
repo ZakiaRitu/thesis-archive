@@ -31,7 +31,7 @@
 
                                     <td>
                                         @if($profile->is_admin != 'YES')
-                                        <a href="#" class="btn btn-danger btn-xs btn-archive deleteBtn"
+                                        <a href="#" class="btn btn-danger btn-sm btn-archive deleteBtn"
                                            data-toggle="modal" data-target="#deleteConfirm"
                                            deleteId="{!! $profile->user_id !!}">
                                             <i class="fa fa-trash" aria-hidden="true"></i>

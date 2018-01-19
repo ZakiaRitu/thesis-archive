@@ -41,7 +41,6 @@
                                         </div>
                                     </div>
                                 </form>
-
                     </div>
                 </div>
             </div>
@@ -52,6 +51,11 @@
 
 @stop
 @section('style')
+    <style>
+        #footer-test{
+            position: fixed;
+        }
+    </style>
 @stop
 @section('script')
 @stop

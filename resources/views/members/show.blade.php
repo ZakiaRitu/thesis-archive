@@ -15,6 +15,7 @@
                             <div class="product-grid-list">
                                 <div class="row mt-30">
                                     @foreach($profiles as $profile)
+                                        @if($profile->user->is_approved = 'YES')
                                         <div class="col-sm-12 col-lg-3 col-md-6">
                                             <!-- product card -->
                                             <div class="product-item bg-light">
@@ -56,6 +57,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

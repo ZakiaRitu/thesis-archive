@@ -53,7 +53,6 @@ class RegisterController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'status' => 'required',
         ]);
     }
 
@@ -65,13 +64,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-//        $user = User::create([
-//            'name' => $data['name'],
-//            'email' => $data['email'],
-//            'password' => bcrypt($data['password']),
-//            'user_meta_data' => strtolower(str_slug($data['name']).rand(10000,100000)),
-//        ]);
-
         $user = new User();
         $user->first_name = $data['first_name'];
         $user->last_name = $data['last_name'];
@@ -79,7 +71,7 @@ class RegisterController extends Controller
         $user->is_approved ='NO';
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
-        $user->user_meta_data = strtolower(str_slug($data['name']).rand(10000,100000));
+        $user->user_meta_data = strtolower(str_slug($data['first_name'].$data['last_name']).rand(10000,100000));
         if($user->save()){
             $profile = new Profile();
             $profile->user_id = $user->id;

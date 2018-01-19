@@ -22,7 +22,7 @@ class MembersController extends Controller
 
     public function otherMembers()
     {
-        $profiles = Profile::where('status','STUDENT')->paginate(12);
+         $profiles = Profile::where('status','STUDENT')->paginate(12);
         return view('members.show', compact('profiles'))
             ->with('title','Other Member Lists');
     }

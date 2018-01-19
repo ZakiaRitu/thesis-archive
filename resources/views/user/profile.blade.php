@@ -45,7 +45,7 @@
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>
-							@if(Auth::user()->id == $user->id)
+							@if(Auth::check() && Auth::user()->id == $user->id)
 								<li class="active" ><a href=""><i class="fa fa-user"></i>About Me</a></li>
 							    <li><a href="{!! route('paper.index') !!}"><i class="fa fa-user"></i> My Papers</a></li>
 								<li><a  href="{{ route('logout') }}"><i class="fa fa-key"></i>Logout</a></li>
@@ -61,7 +61,7 @@
 			</div>
 
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-				@if(Auth::user()->id == $user->id)
+				@if(Auth::check() && Auth::user()->id == $user->id)
 					@include('user.edit-profile')
 				@else
 					@include('user.show-profile')

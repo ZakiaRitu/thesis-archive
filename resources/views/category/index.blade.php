@@ -28,12 +28,12 @@
                                     <th scope="row">{!! $category->id !!}</th>
                                     <td>{!! $category->cat_name !!}</td>
                                     <td>
-                                        <a class="btn btn-warning btn-xs btn-archive Editbtn"
+                                        <a class="btn btn-warning btn-sm btn-archive Editbtn"
                                            href="{!!route('category.edit',$category->cat_meta_data)!!}"
                                            style="margin-right: 3px;"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-danger btn-xs btn-archive deleteBtn"
+                                        <a href="#" class="btn btn-danger btn-sm btn-archive deleteBtn"
                                            data-toggle="modal" data-target="#deleteConfirm"
                                            deleteId="{!! $category->cat_meta_data !!}">
                                             <i class="fa fa-trash" aria-hidden="true"></i>

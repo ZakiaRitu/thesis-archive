@@ -11,11 +11,11 @@
                     @endif
                     <br/>
                     <br/>
-                    @if(Auth::user()->id == $user->id)
+                    @if(Auth::check() && Auth::user()->id == $user->id)
                     <input type="file" name="image_url" id="imgInp" onchange="loadFile(event);">
                     @endif
                 </fieldset>
-                @if(Auth::user()->id == $user->id)
+                @if( Auth::check() && Auth::user()->id == $user->id)
                 <fieldset>
                     {{ Form::submit('Update Photo', array('class' => 'btn btn-main-sm btn-transparent')) }}
                 </fieldset>

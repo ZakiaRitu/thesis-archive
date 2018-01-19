@@ -3,7 +3,7 @@
 Route::get('/', 'HomeController@index')->name('index');
 Auth::routes();
 
-
+Route::get('user/profile/{user_meta_data}', ['as'=> 'profile.userProfile','uses' => 'ProfileController@userProfile']);
 
 Route::get('faculty', ['as'=> 'user.faculty','uses' => 'MembersController@facultyMembers']);
 Route::get('members', ['as'=> 'user.members','uses' => 'MembersController@otherMembers']);
@@ -28,16 +28,20 @@ Route::get('user/profile/{user_meta_data}/paper', ['as'=> 'paper.userWisePaper',
 Route::group(['middleware' => ['auth']], function () {
     Route::get('logout', 'Auth\LoginController@logout');
     Route::get('profile', ['as'=> 'profile.index','uses' => 'ProfileController@index']);
-    Route::get('user/profile/{user_meta_data}', ['as'=> 'profile.userProfile','uses' => 'ProfileController@userProfile']);
     Route::put('update-profile', ['as'=> 'profile.updateInfo','uses' => 'ProfileController@updateInfo']);
     Route::put('photo-update', ['as'=> 'profile.updatePhoto','uses' => 'ProfileController@updatePhoto']);
+
+    #teacher
+    Route::get('admin/faculty', ['as' => 'teacher.create', 'uses' => 'TeacherController@create']);
+    Route::post('admin/faculty', ['as' => 'teacher.store', 'uses' => 'TeacherController@store']);
+    Route::get('admin/faculty/makeAdmin/{user_id}', ['as' => 'teacher.makeAdmin', 'uses' => 'TeacherController@makeAdmin']);
 
 
 
     Route::get('allUser', ['as'=> 'admin.user.allUser','uses' => 'UserController@allUser']);
     Route::delete('allUser/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
 
-    ##
+    ##Paper
     Route::get('allPaper', ['as' => 'paper.allPaper', 'uses' => 'PaperManageController@allPaper']);
     Route::get('mypaper', ['as' => 'paper.index', 'uses' => 'PaperManageController@index']);
     Route::get('mypaper/create', ['as' => 'paper.create', 'uses' => 'PaperManageController@create']);
@@ -47,7 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('mypaper/{paper_meta_data}', ['as' => 'paper.delete', 'uses' => 'PaperManageController@destroy']);
 
 
-
+    ##Category
     Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
     Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
     Route::post('category', ['as' => 'category.store', 'uses' => 'CategoryController@store']);

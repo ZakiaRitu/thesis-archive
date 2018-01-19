@@ -107,7 +107,9 @@
 @section('style')
     {{--include external css here if you neeed--}}
     <style>
-
+        strong{
+            color: red;
+        }
     </style>
 @stop
 @section('script')

@@ -7,7 +7,7 @@
                         <img src="{!! asset('img/favicon.png') !!}" class="navbar-brand" href="/">SUST CSE Thesis Archive
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <span><i class="fa fa-bars"></i></span>
                     </button>
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -62,6 +62,7 @@
                                         <a class="dropdown-item" href="{{ route('admin.user.allUser') }}">All User</a>
                                         <a class="dropdown-item" href="{{ route('paper.allPaper') }}">All Paper</a>
                                         <a class="dropdown-item" href="{{ route('profile.index') }}">All Category</a>
+                                        <a class="dropdown-item" href="{{ route('teacher.create') }}">Faculty Section</a>
                                         @endif
                                     </div>
                                 </li>

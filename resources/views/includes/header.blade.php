@@ -35,6 +35,13 @@
 
 
     <style>
+
+
+        .navbar-toggler {
+            border: 1px solid #ffffff;
+        }
+
+
         a.nav-link {
             color: white;
         }
