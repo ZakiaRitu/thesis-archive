@@ -47,7 +47,9 @@
 						<ul>
 							@if(Auth::check() && Auth::user()->id == $user->id)
 								<li class="active" ><a href=""><i class="fa fa-user"></i>About Me</a></li>
+								@if(Auth::user()->is_approved == 'YES')
 							    <li><a href="{!! route('paper.index') !!}"><i class="fa fa-user"></i> My Papers</a></li>
+								@endif
 								<li><a  href="{{ route('logout') }}"><i class="fa fa-key"></i>Logout</a></li>
 							@else
 								<li class="active" ><a href=""><i class="fa fa-user"></i>About {!! $user->first_name !!}</a></li>

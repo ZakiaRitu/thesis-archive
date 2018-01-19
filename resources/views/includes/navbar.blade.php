@@ -76,7 +76,7 @@
 
                             @if(Auth::user())
                             <ul class="navbar-nav ml-auto mt-10">
-                                @if(Auth::user()->is_approved = 'YES')
+                                @if(Auth::user()->is_approved == 'YES')
                                 <li class="nav-item">
                                     <a class="nav-link login-button" style="color: #fff" href="{!! route('paper.create') !!}">Add Paper</a>
                                 </li>

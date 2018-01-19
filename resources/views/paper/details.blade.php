@@ -35,7 +35,7 @@
                         <h6 class=""><b>Abstract:</b><br>{!! $paper->paper_abstract !!}</h6><br>
                         <h6 class=""><b>Conference Name: &nbsp;</b><br>{!! $paper->paper_published_at !!}</h6><br>
                         <h6 class=""><b>Published Date: &nbsp;</b><br>{!! $paper->paper_publish_date !!}</h6>
-                        @if(Auth::user())
+                        @if(Auth::user() && Auth::user()->is_approved == 'YES')
                             <h6 class=""><b>Download File: &nbsp;</b>
                                 <a href="{!! asset($paper->paper_pdf) !!}">
                                     <i class="fa fa-cloud-download fa-3x" aria-hidden="true"></i>
