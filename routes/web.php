@@ -22,6 +22,8 @@ Route::get('category/{cat_meta_data}/paper', ['as'=> 'paper.categoryWisePaper','
 Route::get('user/profile/{user_meta_data}/paper', ['as'=> 'paper.userWisePaper','uses' => 'PaperController@userWisePaper']);
 
 
+Route::get('archive', ['as'=> 'archive','uses' => 'PaperController@archivedPaperByYear']);
+
 
 
 

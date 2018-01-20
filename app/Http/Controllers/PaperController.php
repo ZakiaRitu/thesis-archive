@@ -14,6 +14,20 @@ class PaperController extends Controller
 {
 
 
+    public function archivedPaperByYear()
+    {
+         $archives = Paper::selectRaw(DB::raw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, COUNT(*) paper_count'))
+            ->groupBy('year')
+           // ->groupBy('month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->get();
+
+        return view('archive', compact( 'archives'))->with('title', 'Archived Papers');
+    }
+
+
+
     public function allPaperList(){
         $categories = Category::pluck( 'cat_name', 'id');
         $papers = Paper::orderBY('created_at','desc')->paginate(12);
@@ -44,13 +58,29 @@ class PaperController extends Controller
 
         $titleSearch = '%'.$request->paper_title.'%';
 
-        if($request->paper_title&& $request->paper_category){
+        $authorIds = User::where('name', 'LIKE',$titleSearch)->pluck('id');
+        $paperAuthorIds = PaperUser::whereIn('user_id',$authorIds)->pluck('paper_id');
+
+        $categoryIds = Category::where('cat_name', 'LIKE',$titleSearch)->pluck('id');
+        $categoryPaperIds = CategoryPaper::whereIn('cat_id',$categoryIds)->pluck('paper_id');
+
+
+        if($request->paper_title && $request->paper_category){
             $paperIds = CategoryPaper::where('cat_id',$request->paper_category)->pluck('paper_id');
-            $papers = Paper::where('paper_title', 'LIKE',$titleSearch)->orWhereIn('id',$paperIds)->orderBY('created_at','desc')->paginate(12);
+            $papers = Paper::where('paper_title', 'LIKE',$titleSearch)
+                ->orWhereIn('id',$paperIds)
+                ->orWhereIn('id',$paperAuthorIds)
+                ->orderBY('created_at','desc')
+                ->paginate(12);
         }elseif($request->paper_title){
-            $papers = Paper::where('paper_title', 'LIKE',$titleSearch)->orderBY('created_at','desc')->paginate(12);
+            $papers = Paper::where('paper_title', 'LIKE',$titleSearch)
+                ->orWhereIn('id',$paperAuthorIds)
+                ->orWhereIn('id',$categoryPaperIds)
+                ->orderBY('created_at','desc')
+                ->paginate(12);
         }elseif($request->paper_category){
-            $paperIds = CategoryPaper::where('cat_id',$request->paper_category)->pluck('paper_id');
+            $paperIds = CategoryPaper::where('cat_id',$request->paper_category)
+                ->pluck('paper_id');
             $papers = Paper::whereIn('id', $paperIds)->orderBY('created_at','desc')->paginate(12);
         }else{
             $papers = Paper::orderBY('created_at','desc')->paginate(12);
@@ -58,8 +88,6 @@ class PaperController extends Controller
 
 
         $categories = Category::pluck( 'cat_name', 'id');
-
-
         return view('paper.index', compact( 'papers','categories'))->with('title', 'Papers (Conference/Journal)');
     }
 
@@ -110,7 +138,7 @@ class PaperController extends Controller
             ->whereYear('created_at', $year)
             ->paginate(12);
         return view('paper.index', compact( 'papers','categories'))
-                        ->with('title', 'Archived Paper-'.$month.' /'.$year);
+                        ->with('title', 'Archived Paper-'. $year);
     }
 
 }

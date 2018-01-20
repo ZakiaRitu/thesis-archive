@@ -842,15 +842,14 @@ ul.pagination1 .active a {
 .hero-area .advance-search {
   background: #fff;
   border-color: #008B8B;
-  padding: 40px 30px;
-  border-radius: 3px;
-  margin-bottom: -50px;
+  padding: 40px 25px;
+  border-radius: 10px;
   box-shadow: -1px 3px 6px rgba(0, 0, 0, 0.24);
 }
 
 @media (max-width: 480px) {
   .hero-area .advance-search {
-    margin-bottom: -80px;
+    margin-bottom: 40%;
   }
 }
 

@@ -18,8 +18,8 @@
 
 
 
-                                <li class="nav-item  {{ Request::is('category*')? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('category.categoryList') }}">
+                                <li class="nav-item  {{ Request::is('archive*')? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('archive') }}">
                                         Archive</a>
                                 </li>
 
