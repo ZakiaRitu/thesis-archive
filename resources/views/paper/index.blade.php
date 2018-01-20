@@ -33,7 +33,7 @@
                                 Category Search:
                                 {{ \App\Category::where('id',Request::get('paper_category'))->first()->cat_name }}
                             @endif
-                            
+
                         </div>
                         @endif
                         <hr>

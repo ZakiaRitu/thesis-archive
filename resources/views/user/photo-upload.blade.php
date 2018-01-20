@@ -25,15 +25,13 @@
         </div>
     @endif
 
-    @if( Auth::check() && Auth::user()->id == $user->id)
-        {{ Form::submit('Update Photo', array('class' => 'btn btn-main-sm btn-transparent')) }}
-    @endif
+    <p class="file-name"></p>
 {{ Form::close() }}
 
 
 <style>
-    .avatar{
-
+    .disabled{
+        display: none;
     }
 </style>
 

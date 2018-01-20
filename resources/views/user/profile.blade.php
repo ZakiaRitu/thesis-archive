@@ -106,6 +106,21 @@
 @section('script')
    {{--include external js here if you neeed--}}
    <script src="{!! asset('js/photo_upload.js') !!}"></script>
+
+	<script>
+        $(document).ready(
+            function(){
+                $('input:file').change(
+                    function(){
+                        if ($(this).val()) {
+                            var filename = $(this).val();
+                            $('input:submit').attr('disabled',false);
+                            $(this).closest('.profile-thumb').find('.file-name').html('<button type="submit" class="btn btn-main-sm btn-transparent" value="Submit">Update Photo</button>');
+                        }
+                    }
+                );
+            });
+	</script>
 @stop
 
 
