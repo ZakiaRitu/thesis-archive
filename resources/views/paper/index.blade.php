@@ -33,8 +33,7 @@
                                 Category Search:
                                 {{ \App\Category::where('id',Request::get('paper_category'))->first()->cat_name }}
                             @endif
-
-                            <p>Found {!!  count($papers)  !!} Papers in .0000{!! rand(20,60) !!} ms</p>
+                            
                         </div>
                         @endif
                         <hr>
