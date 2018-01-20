@@ -74,12 +74,12 @@
 .upload_label{
     color: #111;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
     white-space: nowrap;
     padding: 4px;
     border-radius: 3px;
-    min-width: 60px;
+    min-width: 70px;
     width: 100%;
     max-width: 80px;
     margin: auto;
@@ -93,6 +93,8 @@
     display: none;
     transition: background 200ms, color 200ms;
 }
+
+
 @keyframes popDown{
     100%{
         transform: translateY(0);

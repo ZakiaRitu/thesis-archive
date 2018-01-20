@@ -5,7 +5,8 @@
             </div>
             @if(Auth::check() && Auth::user()->id == $user->id)
             <div class="avatar_upload" >
-                <label class="upload_label">Upload
+                <label class="upload_label">
+                    <i class="fa fa-camera"> Change</i>
                     <input type="file"   name="image_url" id="upload" onchange="loadFile(event);">
                 </label>
             </div>
@@ -17,7 +18,8 @@
             </div>
             @if(Auth::check() && Auth::user()->id == $user->id)
             <div class="avatar_upload" >
-                <label class="upload_label">Upload
+                <label class="upload_label">
+                    <i class="fa fa-camera"> Change</i>
                     <input type="file"  name="image_url" id="upload" onchange="loadFile(event);">
                 </label>
             </div>
