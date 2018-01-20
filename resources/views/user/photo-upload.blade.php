@@ -29,13 +29,6 @@
 {{ Form::close() }}
 
 
-<style>
-    .disabled{
-        display: none;
-    }
-</style>
-
-
 
 
 
