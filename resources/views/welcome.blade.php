@@ -19,7 +19,7 @@
                                         <div class="block d-flex">
                                             <input type="text" name="paper_title"
                                                    class="form-control mb-2 mr-sm-2 mb-sm-0"
-                                                   id="search" placeholder="Search paper, category, author ...">
+                                                   id="search" placeholder="Search paper by name, category, author ...">
                                             <!-- Search Button -->
                                             <button class="btn btn-main" style="background-color: #008B8B; color: #fff;">SEARCH</button>
                                         </div>
