@@ -994,8 +994,8 @@ ul.pagination1 .active a {
 }
 
 .user-dashboard-profile .profile-thumb img {
-  width: 130px;
-  height: auto;
+  width: 200px;
+  height: 200px;
   border: 5px solid #F4F7F9;
 }
 

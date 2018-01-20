@@ -31,48 +31,43 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('update-profile', ['as'=> 'profile.updateInfo','uses' => 'ProfileController@updateInfo']);
     Route::put('photo-update', ['as'=> 'profile.updatePhoto','uses' => 'ProfileController@updatePhoto']);
 
-    #teacher
-    Route::get('admin/faculty', ['as' => 'teacher.create', 'uses' => 'TeacherController@create']);
-    Route::post('admin/faculty', ['as' => 'teacher.store', 'uses' => 'TeacherController@store']);
-    Route::get('admin/faculty/makeAdmin/{user_id}', ['as' => 'teacher.makeAdmin', 'uses' => 'TeacherController@makeAdmin']);
+
+    Route::group(['middleware' => ['admin']], function () {
+        #teacher
+        Route::get('admin/faculty', ['as' => 'teacher.create', 'uses' => 'TeacherController@create']);
+        Route::post('admin/faculty', ['as' => 'teacher.store', 'uses' => 'TeacherController@store']);
+        Route::get('admin/faculty/makeAdmin/{user_id}', ['as' => 'teacher.makeAdmin', 'uses' => 'TeacherController@makeAdmin']);
+
+        Route::get('user/approved', ['as'=> 'admin.user.allUser','uses' => 'UserController@allUser']);
+        Route::get('user/pending', ['as'=> 'admin.user.pending','uses' => 'UserController@pendingUsers']);
+        Route::get('user/pending/approved/{user_id}', ['as'=> 'admin.user.pendingApproved','uses' => 'UserController@pendingApproved']);
+        Route::delete('user/approved/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
+
+        ##Category
+        Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
+        Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
+        Route::post('category', ['as' => 'category.store', 'uses' => 'CategoryController@store']);
+        Route::get('category/{cat_meta_data}/edit', ['as' => 'category.edit', 'uses' => 'CategoryController@edit']);
+        Route::put('category/{cat_meta_data}/update', ['as' => 'category.update', 'uses' => 'CategoryController@update']);
+        Route::delete('category/{cat_meta_data}', ['as' => 'category.delete', 'uses' => 'CategoryController@destroy']);
+
+        ##Paper
+        Route::get('allPaper', ['as' => 'paper.allPaper', 'uses' => 'PaperManageController@allPaper']);
+    });
 
 
-
-    Route::get('user/approved', ['as'=> 'admin.user.allUser','uses' => 'UserController@allUser']);
-    Route::get('user/pending', ['as'=> 'admin.user.pending','uses' => 'UserController@pendingUsers']);
-    Route::get('user/pending/approved/{user_id}', ['as'=> 'admin.user.pendingApproved','uses' => 'UserController@pendingApproved']);
-    Route::delete('user/approved/{id}', ['as'=> 'admin.user.delete','uses' => 'UserController@deleteUser']);
-
-    ##Paper
-    Route::get('allPaper', ['as' => 'paper.allPaper', 'uses' => 'PaperManageController@allPaper']);
-    Route::get('mypaper', ['as' => 'paper.index', 'uses' => 'PaperManageController@index']);
-    Route::get('mypaper/create', ['as' => 'paper.create', 'uses' => 'PaperManageController@create']);
-    Route::post('mypaper', ['as' => 'paper.store', 'uses' => 'PaperManageController@store']);
-    Route::get('mypaper/{paper_meta_data}/edit', ['as' => 'paper.edit', 'uses' => 'PaperManageController@edit']);
-    Route::put('mypaper/{paper_meta_data}/update', ['as' => 'paper.update', 'uses' => 'PaperManageController@update']);
-    Route::delete('mypaper/{paper_meta_data}', ['as' => 'paper.delete', 'uses' => 'PaperManageController@destroy']);
-
-
-    ##Category
-    Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
-    Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
-    Route::post('category', ['as' => 'category.store', 'uses' => 'CategoryController@store']);
-    Route::get('category/{cat_meta_data}/edit', ['as' => 'category.edit', 'uses' => 'CategoryController@edit']);
-    Route::put('category/{cat_meta_data}/update', ['as' => 'category.update', 'uses' => 'CategoryController@update']);
-    Route::delete('category/{cat_meta_data}', ['as' => 'category.delete', 'uses' => 'CategoryController@destroy']);
+    Route::group(['middleware' => ['approved']], function () {
+        ##Paper
+        Route::get('mypaper', ['as' => 'paper.index', 'uses' => 'PaperManageController@index']);
+        Route::get('mypaper/create', ['as' => 'paper.create', 'uses' => 'PaperManageController@create']);
+        Route::post('mypaper', ['as' => 'paper.store', 'uses' => 'PaperManageController@store']);
+        Route::get('mypaper/{paper_meta_data}/edit', ['as' => 'paper.edit', 'uses' => 'PaperManageController@edit']);
+        Route::put('mypaper/{paper_meta_data}/update', ['as' => 'paper.update', 'uses' => 'PaperManageController@update']);
+        Route::delete('mypaper/{paper_meta_data}', ['as' => 'paper.delete', 'uses' => 'PaperManageController@destroy']);
+    });
 
 
 });
 
 
 
-
-
-
-
-
-
-Route::get('test', function (){
-    $cat = \App\Category::pluck('id');
-
-});

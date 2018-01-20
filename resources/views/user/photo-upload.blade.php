@@ -1,30 +1,43 @@
-<center>
-    <div class="box box-primary">
-        <div class="box-body box-profile img-circle">
-            <div class="photo-upload">
-                {{ Form::open(array('route' => 'profile.updatePhoto', 'method' => 'put', 'files' => true)) }}
-                <fieldset>
-                    @if($user->profile->image != null)
-                        <img class="preview rounded-circle" id="preview" height="200px"  width="200px" alt=" "  src="{{asset($user->profile->image)}}">
-                    @else
-                        <img src="{!! asset('images/anonymous.jpg') !!}" alt="" class="rounded-circle">
-                    @endif
-                    <br/>
-                    <br/>
-                    @if(Auth::check() && Auth::user()->id == $user->id)
-                    <input type="file" name="image_url" id="imgInp" onchange="loadFile(event);">
-                    @endif
-                </fieldset>
-                @if( Auth::check() && Auth::user()->id == $user->id)
-                <fieldset>
-                    {{ Form::submit('Update Photo', array('class' => 'btn btn-main-sm btn-transparent')) }}
-                </fieldset>
-                @endif
-                {{ Form::close() }}
+{{ Form::open(array('route' => 'profile.updatePhoto', 'method' => 'put', 'files' => true)) }}
+    @if($user->profile->image != null)
+        <div class="avatar" id="avatar">
+            <div><img class="preview rounded-circle" id="preview" src="{{asset($user->profile->image)}}" id="avatar-image" class="avatar_img" id="">
             </div>
+            @if(Auth::check() && Auth::user()->id == $user->id)
+            <div class="avatar_upload" >
+                <label class="upload_label">Upload
+                    <input type="file"   name="image_url" id="upload" onchange="loadFile(event);">
+                </label>
             </div>
+            @endif
         </div>
-</center>
+    @else
+        <div class="avatar" id="avatar">
+            <div><img src="{!! asset('images/anonymous.jpg') !!}" id="avatar-image" class="avatar_img" id="">
+            </div>
+            @if(Auth::check() && Auth::user()->id == $user->id)
+            <div class="avatar_upload" >
+                <label class="upload_label">Upload
+                    <input type="file"  name="image_url" id="upload" onchange="loadFile(event);">
+                </label>
+            </div>
+            @endif
+        </div>
+    @endif
+
+    @if( Auth::check() && Auth::user()->id == $user->id)
+        {{ Form::submit('Update Photo', array('class' => 'btn btn-main-sm btn-transparent')) }}
+    @endif
+{{ Form::close() }}
+
+
+<style>
+    .avatar{
+
+    }
+</style>
+
+
 
 
 

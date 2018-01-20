@@ -1,7 +1,3 @@
-/**
- * Created by talha on 5/6/2016.
- */
-
 var loadFile = function(event) {
     oldimg = $('.preview').attr('src');
     var preview = document.getElementById('preview');

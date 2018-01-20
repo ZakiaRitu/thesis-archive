@@ -84,6 +84,23 @@
 			padding: 7px;
 			height: 100px;
 		}
+
+		.btn {
+			border: 2px solid gray;
+			color: gray;
+			background-color: white;
+			padding: 5px 20px;
+			border-radius: 8px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.btn:focus, .btn:hover {
+			text-decoration: none;
+			border-color: seagreen;
+			color: darkslategrey;
+		}
+
 	</style>
 @stop
 @section('script')
