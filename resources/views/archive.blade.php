@@ -70,7 +70,7 @@
             </div>
         </div>
     </section>
-
+<br><br>
 @stop
 @section('style')
     {{--include external css here if you neeed--}}

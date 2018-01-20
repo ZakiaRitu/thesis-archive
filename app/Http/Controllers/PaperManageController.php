@@ -58,7 +58,7 @@ class PaperManageController extends Controller
         $category = Category::pluck('cat_name','cat_name');
         $users    = User::where('is_approved','YES')->pluck('name','id');
         return view('paper.create', compact('category','users','paperType'))
-            ->with('title','Create New Paper');
+            ->with('title','Add New Paper');
     }
 
 
