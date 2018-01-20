@@ -10,6 +10,7 @@
                 <div class="col-md-4">
                     <div class="search-result bg-gray">
                         <h2 class="text-left">{!! $title or '' !!}</h2>
+                        <small>Default Password Set: 123456</small>
                         <hr>
                         {!! Form::open(array('route' => 'teacher.store',  'files' => true) ) !!}
                         <div class="form-group">
