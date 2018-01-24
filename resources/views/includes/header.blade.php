@@ -23,7 +23,7 @@
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
 
     <!-- FAVICON -->
-    <link href="{!!  asset("img/favicon.ico") !!}" rel="shortcut icon">
+    <link rel="shortcut icon" type="image/x-icon" href="{!!  asset("img/favicon.ico") !!}" rel="shortcut icon">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

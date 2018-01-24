@@ -68,8 +68,8 @@ class PaperController extends Controller
         if($request->paper_title && $request->paper_category){
             $paperIds = CategoryPaper::where('cat_id',$request->paper_category)->pluck('paper_id');
             $papers = Paper::where('paper_title', 'LIKE',$titleSearch)
-                ->orWhereIn('id',$paperIds)
-                ->orWhereIn('id',$paperAuthorIds)
+                ->whereIn('id',$paperIds)
+                #->orWhereIn('id',$paperAuthorIds)
                 ->orderBY('created_at','desc')
                 ->paginate(12);
         }elseif($request->paper_title){

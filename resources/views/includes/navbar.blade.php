@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg  navigation">
                     <a class="navbar-brand" href="/">
-                        <img src="{!! asset('img/favicon.png') !!}" class="navbar-brand" href="/">SUST CSE Thesis Archive
+                        <img src="{!! asset('img/favicon.png') !!}" class="navbar-brand" href="/"><b style="color:#008B8B;">Thesis Archive</b>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span><i class="fa fa-bars"></i></span>
@@ -20,7 +20,8 @@
 
                                 <li class="nav-item  {{ Request::is('archive*')? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('archive') }}">
-                                        Archive</a>
+                                        Archive
+                                    </a>
                                 </li>
 
 
@@ -50,11 +51,12 @@
 
 
 
-                            @if(Auth::user())
+                                @if(Auth::user())
                                 <li class="nav-item dropdown dropdown-slide {{ Request::is('profile')? 'active' : '' }}">
                                     <a class="nav-link dropdown-toggle" href="{{route('profile.index')}}"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ Auth::user()->first_name }} <span><i class="fa fa-angle-down"></i></span>
+                                        <img class="img-circle" src="{!! Auth::user()->profile->image !!}">
+                                        <span><i class="fa fa-angle-down"></i></span>
                                     </a>
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -101,3 +103,36 @@
         </div>
     </div>
 </section>
+
+
+<style>
+    .img-circle{
+        margin: -3px;
+        border: 2px solid white;
+        height: 30px;
+        -webkit-border-radius: 500px;
+        -moz-border-radius: 500px;
+    }
+
+    .login-button {
+        background-color: transparent;
+        border: 2px solid #008B8B;
+        margin-right: 8px;
+        -webkit-text-fill-color: #008B8B;
+        padding: 6px 20px !important;
+    }
+
+    a.nav-link.login-button:hover {
+        background: #008B8B;
+        -webkit-text-fill-color: #ffffff;
+    }
+
+
+    .dropdown-item:focus, .dropdown-item:hover {
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #008B8B;
+    }
+
+
+</style>

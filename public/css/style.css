@@ -697,7 +697,10 @@ ul.pagination1 .active a {
 }
 
 .main-nav .nav-item.active .nav-link {
-  color: #008B8B;
+  border-bottom: 2px solid #008B8B;
+  content: " ";
+  left: 0;
+
 }
 
 .main-nav .search .nav-link i {

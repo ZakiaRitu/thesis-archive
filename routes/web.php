@@ -9,7 +9,7 @@ Route::get('faculty', ['as'=> 'user.faculty','uses' => 'MembersController@facult
 Route::get('members', ['as'=> 'user.members','uses' => 'MembersController@otherMembers']);
 
 
-Route::get('papers', ['as'=> 'paper.allPaperList','uses' => 'PaperController@allPaperList']);
+#Route::get('papers', ['as'=> 'paper.allPaperList','uses' => 'PaperController@allPaperList']);
 Route::get('papers', ['as'=> 'paper.paperSearch','uses' => 'PaperController@paperSearch']);
 Route::get('papers/details/{paper_meta_data}', ['as'=> 'paper.paperDetails','uses' => 'PaperController@paperDetails']);
 Route::get('papers/archive/{month}/{year}', ['as'=> 'paper.archivedPaper','uses' => 'PaperController@archivedPaper']);
