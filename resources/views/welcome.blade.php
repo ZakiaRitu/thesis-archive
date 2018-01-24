@@ -11,10 +11,6 @@
 
     <!-- Toastr style -->
     {!! Html::style('assets/toastr/toastr.min.css') !!}
-    {!! Html::script('assets/toastr/toastr.min.js') !!}
-    @include('includes.toastr')
-
-
     <link href="{!!  asset('asset_new/css/profession-black-green.css') !!}" rel="stylesheet" type="text/css" id="style-primary">
 
     <link rel="shortcut icon" type="image/x-icon" href="{!!  asset("img/favicon.ico") !!}" rel="shortcut icon">
@@ -398,10 +394,14 @@
 </div>
 <!-- /.page-wrapper -->
 <script type="text/javascript" src="{!! asset('asset_new/js/jquery.js') !!}"></script>
+{!! Html::script('assets/toastr/toastr.min.js') !!}
+@include('includes.toastr')
 <script type="text/javascript" src="{!! asset('asset_new/js/jquery.ezmark.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('asset_new/libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('asset_new/libraries/bootstrap-sass/javascripts/bootstrap/transition.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('asset_new/libraries/bootstrap-fileinput/js/fileinput.min.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('asset_new/libraries/bootstrap-select/js/bootstrap-select.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('asset_new/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('asset_new/libraries/cycle2/jquery.cycle2.min.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('asset_new/libraries/cycle2/jquery.cycle2.carousel.min.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('asset_new/libraries/countup/countup.min.js') !!}"></script>

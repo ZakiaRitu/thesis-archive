@@ -43,6 +43,36 @@ class LoginController extends Controller
     }
 
 
+    /**
+     * Override Default Method
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/')->with('success','Logout Successfully');
+    }
+
+
+
+    /**
+     * Override Default Method
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+            ?: redirect()->intended($this->redirectPath())->with('success', 'Login Successfully');
+    }
 
 
 }
